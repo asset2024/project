@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('cashins', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('pekerjaan_id')->unique();
+            $table->date('tgl_transaksi');
+            $table->string('transaksi');
+            $table->double('nominal');
+            $table->string('dari');
+            $table->string('catatan');
+            $table->string('status');
         });
     }
 

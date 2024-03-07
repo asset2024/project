@@ -3,7 +3,7 @@
 <div class="block-header">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>{{$title}}</h2>
+            <h2>Project</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
                 <li class="breadcrumb-item">Project</li>
@@ -43,60 +43,44 @@
                                 <th>Project</th>
                                 <th>Client</th>
                                 <th>Nilai Kontrak</th>
+                                <th>Tanggal Kontrak</th>
+                                <th>Nomor Kontrak</th>
+                                <th>Lama Pekerjaan</th>
                                 <th>Mulai Kontrak</th>
                                 <th>Selesai Kontrak</th>
-                                <th>Jml SPK</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($project as $proj )
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                         <span></span>
                                     </label>
-                                    <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                    {{-- <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
                                 </td>
                                 <td>
                                     <h6 class="mb-0">Marshall Nichols</h6>
                                     <span>marshall-n@gmail.com</span>
-                                </td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>24 Jun, 2015</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
+                                </td> --}}
+                                <td><span>{{ $proj->project }}</span></td>
+                                <td><span>{{ $proj->client_id }}</span></td>
+                                <td>{{ $proj->nilai_kontrak }}</td>
+                                <td>{{ $proj->tgl_kontrak }}</td>
+                                <td>{{ $proj->no_kontrak }}</td>
+                                <td>{{ $proj->lama_pekerjaan }}</td>
+                                <td>{{ $proj->mulai_kontrak }}</td>
+                                <td>{{ $proj->selesai_kontrak }}</td>
+                                <td>{{ $proj->status }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="width45">
-                                    <label class="fancy-checkbox">
-                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                    <img src="../assets/images/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0">Susie Willis</h6>
-                                    <span>sussie-w@gmail.com</span>
-                                </td>
-                                <td><span>LA-0216</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>28 Jun, 2015</td>
-                                <td>Web Developer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -13,6 +13,7 @@ class ProjectController extends Controller
     public function index()
     {
         $title = 'Project';
+        $project = Project::all();
 
         // $project = Project::all();
         return view('pages.admin.project', [
@@ -42,7 +43,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        $project=Project::all();
+        return view('pages.admin.project', compact('project'));
     }
 
     /**
