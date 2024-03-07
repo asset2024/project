@@ -34,20 +34,20 @@
                            <li>
                                <a href="#Dashboard"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
                            </li>
-                           <li class="{{ Request::is('project','spk') ? 'active' : '' }}">
+                           <li class="{{ Request::is('project','pekerjaan') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Project</span></a>
                                <ul>
-                                   <li class="{{ Request::is('project') ? 'active' : '' }}"><a href="app-inbox.html">Project</a></li>
-                                   <li class="{{ Request::is('spk') ? 'active' : '' }}"><a href="app-chat.html">SPK</a></li>
+                                   <li class="{{ Request::is('project') ? 'active' : '' }}"><a href="/project">Project</a></li>
+                                   <li class="{{ Request::is('pekerjaan') ? 'active' : '' }}"><a href="/pekerjaan">Pekerjaan</a></li>
 
                                </ul>
                            </li>
                            <li class="{{ Request::is('cash-in','cash-out','invoice') ? 'active' : '' }}">
                                <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Finance</span></a>
                                <ul>
-                                   <li class="{{ Request::is('cash-in') ? 'active' : '' }}"><a href="widgets-statistics.html">Cash In</a></li>
-                                   <li class="{{ Request::is('cash-out') ? 'active' : '' }}"><a href="widgets-data.html">Cash Out</a></li>
-                                   <li class="{{ Request::is('invoice') ? 'active' : '' }}"><a href="widgets-chart.html">Invoice</a></li>
+                                   <li class="{{ Request::is('cash-in') ? 'active' : '' }}"><a href="/cash-in">Cash In</a></li>
+                                   <li class="{{ Request::is('cash-out') ? 'active' : '' }}"><a href="/cash-out">Cash Out</a></li>
+                                   <li class="{{ Request::is('invoice') ? 'active' : '' }}"><a href="/invoice">Invoice</a></li>
                                </ul>
                            </li>
 

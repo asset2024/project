@@ -9,3 +9,10 @@
 <!-- page js file -->
 <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}"></script>
 <script src="{{ asset('js/index.js') }}"></script>
+
+<script src="{{ asset('assets/bundles/datatablescripts.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/sweetalert/sweetalert.min.js') }}"></script>
+
+<!-- page js file -->
+<script src="{{ asset('js/pages/tables/jquery-datatable.js') }}"></script>
+<script src="{{ asset('js/pages/ui/dialogs.js') }}"></script>

@@ -6,3 +6,6 @@
 
 <!-- MAIN Project CSS file -->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+<link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">

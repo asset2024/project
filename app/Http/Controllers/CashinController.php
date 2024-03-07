@@ -14,10 +14,10 @@ class CashinController extends Controller
     {
         $title = 'Cash In';
 
-        $cashin = Cashin::all();
+        // $cashin = Cashin::all();
         return view('pages.admin.cashin', [
             'title' => $title,
-            'listCashin' => $cashin,
+            //  'listCashin' => $cashin,
         ]);
     }
 

@@ -14,10 +14,10 @@ class CashoutController extends Controller
     {
         $title = 'Cash Out';
 
-        $cashout = Cashout::all();
+        //    $cashout = Cashout::all();
         return view('pages.admin.cashout', [
             'title' => $title,
-            'listCashout' => $cashout,
+            //     'listCashout' => $cashout,
         ]);
     }
 

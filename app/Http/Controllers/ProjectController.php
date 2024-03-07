@@ -14,10 +14,10 @@ class ProjectController extends Controller
     {
         $title = 'Project';
 
-        $project = Project::all();
+        // $project = Project::all();
         return view('pages.admin.project', [
             'title' => $title,
-            'listProject' => $project,
+            // 'listProject' => $project,
         ]);
     }
 

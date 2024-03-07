@@ -14,10 +14,10 @@ class ClientController extends Controller
     {
         $title = 'Client';
 
-        $client = Client::all();
+        //  $client = Client::all();
         return view('pages.admin.client', [
             'title' => $title,
-            'listClient' => $client,
+            //    'listClient' => $client,
         ]);
     }
 

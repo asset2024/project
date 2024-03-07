@@ -14,10 +14,10 @@ class InvoiceController extends Controller
     {
         $title = 'Invoice';
 
-        $invoice = Invoice::all();
+        // $invoice = Invoice::all();
         return view('pages.admin.invoice', [
             'title' => $title,
-            'listInvoice' => $invoice,
+            //  'listInvoice' => $invoice,
         ]);
     }
 

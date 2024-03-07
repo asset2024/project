@@ -14,10 +14,10 @@ class PekerjaanController extends Controller
     {
         $title = 'Pekerjaan';
 
-        $pekerjaan = Pekerjaan::all();
+        // $pekerjaan = Pekerjaan::all();
         return view('pages.admin.pekerjaan', [
             'title' => $title,
-            'listPekerjaan' => $pekerjaan,
+            // 'listPekerjaan' => $pekerjaan,
         ]);
     }
 
