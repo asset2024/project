@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('project');
+            $table->string('client_id')->unique();
+            $table->double('nilai_kontrak');
+            $table->date('tgl_kontrak');
+            $table->string('no_kontrak');
+            $table->date('lama_pekerjaan');
+            $table->date('mulai_kontrak');
+            $table->date('selesai_kontrak');
+            $table->string('status');
+
         });
     }
 

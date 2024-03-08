@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('pekerjaans', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('project_id')->unique();
+            $table->string('pekerjaan');
+            $table->string('no_spk');
+            $table->double('nilai_pekerjaan');
+            $table->date('mulai_pekerjaan');
+            $table->date('selesai_pekerjaan');
+            $table->integer('progres');
+            $table->string('status');
         });
     }
 

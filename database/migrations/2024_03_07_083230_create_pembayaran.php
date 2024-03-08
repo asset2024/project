@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cashouts', function (Blueprint $table) {
+        Schema::create('pembayaran', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('pekerjaan_id')->unique();
-            $table->date('tgl_transaksi');
-            $table->string('transaksi');
+            $table->string('jenis_pembayaran');
             $table->double('nominal');
-            $table->string('tujuan');
-            $table->string('catatan');
+            $table->date('tgl_invoice');
+            $table->string('no_invoice');
+            $table->integer('progres');
             $table->string('status');
+
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cashouts');
+        Schema::dropIfExists('pembayaran');
     }
 };
