@@ -17,6 +17,65 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="inputModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="inputModalLabel">Form Input Data SPK</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="{{ route('store_pekerjaan') }}" id="inputForm">
+                            @csrf
+                            <div class="form-group">
+                                <label for="project">Project:</label>
+                                <input type="text" id="project" name="project" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="client_id">Pekerjaan:</label>
+                                <select id="client_id" name="client_id" class="form-control" required>
+                                    <option value="" selected disabled>Select Client</option>
+                                    @foreach($listClients as $client)
+                                        <option value="{{ $client->client_id }}">{{ $client->client }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="nilai_kontrak">No SPK:</label>
+                                <input type="number" id="nilai_kontrak" name="nilai_kontrak" class="form-control" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_kontrak">Nilai Pekerjaan:</label>
+                                <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="no_kontrak">Mulai Pekerjaan:</label>
+                                <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mulai_kontrak">Selesai Pekerjaan:</label>
+                                <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="selesai_kontrak">Progres:</label>
+                                <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="status">Status:</label>
+                                <input type="text" id="status" name="status" class="form-control" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" form="inputForm" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 
@@ -43,11 +102,11 @@
                                 <th>Pekerjaan</th>
                                 <th>Project</th>
                                 <th>No. SPK</th>
-                                <th>Mulai Kontrak</th>
-                                <th>Selesai Kontrak</th>
-                                <th>Jml SPK</th>
+                                <th>Nilai Pekerjaan</th>
+                                <th>Mulai Pekerjaan</th>
+                                <th>Selesai Pekerjaan</th>
+                                <th>Progres</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
