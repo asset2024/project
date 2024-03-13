@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pekerjaan;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PekerjaanController extends Controller
@@ -12,12 +13,15 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        $title = 'Pekerjaan';
+        $title = 'Pekerjaans';
+        $Pekerjaan = Pekerjaan::with('project')->get();
+        $listProject = Project::all();
 
-        // $pekerjaan = Pekerjaan::all();
-        return view('pages.admin.pekerjaan', [
+        // $Pekerjaan = Pekerjaan::all();
+        return view('pages.admin.Pekerjaan', [
             'title' => $title,
-            // 'listPekerjaan' => $pekerjaan,
+            'listPekerjaan' => $Pekerjaan,
+            'listProject'=>$listProject
         ]);
     }
 
@@ -34,9 +38,42 @@ class PekerjaanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        var_dump($request->all());
+        {
+            // $request->validate([
+            //     'project' => 'required',
+            //     'client_id' => 'required',
+            //     'nilai_kontrak' => 'required|numeric',
+            //     'tgl_kontrak' => 'required|date',
+            //     'no_kontrak' =>  'required|numeric',
+            //     'lama_pekerjaan' => 'required|numeric', 
+            //     'mulai_kontrak' => 'required|date',
+            //     'selesai_kontrak' => ' required|date',
+            //     'status' => 'required'
+            // ]);
+            
+            $Pekerjaan = new Pekerjaan();
+            $Pekerjaan->pekerjaan = $request->pekerjaan;
+            $Pekerjaan->project_id = $request->project_id;
+            $Pekerjaan->no_spk = $request->no_spk;
+            $Pekerjaan->nilai_pekerjaan = $request->nilai_pekerjaan;
+            $Pekerjaan->mulai_pekerjaan= $request->mulai_pekerjaan;
+            $Pekerjaan->lama_pekerjaan = '';
+            $Pekerjaan->mulai_kontrak = $request->mulai_kontrak;
+            $Pekerjaan->selesai_kontrak = $request->selesai_kontrak;
+            $Pekerjaan->status = '1';
+            $Pekerjaan->save();
+        
+           
+            if ($project->save()) {
+                return redirect()->back()->with('success', 'Data Project berhasil disimpan.');
+            } else {
+                return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
+            }
+            
+        } 
     }
-
     /**
      * Display the specified resource.
      */

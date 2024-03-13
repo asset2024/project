@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
-Route::get('/project', [ProjectController::class, 'show'])->name('project');
+Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
 Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
 Route::get('/cash-in', [CashinController::class, 'index'])->name('cash-in');
 Route::get('/cash-out', [CashoutController::class, 'index'])->name('cash-out');

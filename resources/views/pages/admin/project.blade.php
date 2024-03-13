@@ -13,7 +13,66 @@
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="d-flex flex-row-reverse">
                 <div class="page_action">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addcontact">Add New</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal">Add New</button>
+                </div>
+                {{-- Modal --}}
+            </div>
+            <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="inputModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="inputModalLabel">Form Input Data Project</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('store_project') }}" id="inputForm">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="project">Project:</label>
+                                    <input type="text" id="project" name="project" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="client_id">ID Client:</label>
+                                    <select id="client_id" name="client_id" class="form-control" required>
+                                        <option value="" selected disabled>Select Client</option>
+                                        @foreach($listClients as $client)
+                                            <option value="{{ $client->client_id }}">{{ $client->client }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nilai_kontrak">Nilai Kontrak:</label>
+                                    <input type="number" id="nilai_kontrak" name="nilai_kontrak" class="form-control" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="tgl_kontrak">Tanggal Kontrak:</label>
+                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="no_kontrak">Nomor Kontrak:</label>
+                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mulai_kontrak">Mulai Kontrak:</label>
+                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selesai_kontrak">Selesai Kontrak:</label>
+                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status:</label>
+                                    <input type="text" id="status" name="status" class="form-control" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" form="inputForm" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +112,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($project as $proj )
+                            @foreach ($listProject as $proj )
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -67,7 +126,7 @@
                                     <span>marshall-n@gmail.com</span>
                                 </td> --}}
                                 <td><span>{{ $proj->project }}</span></td>
-                                <td><span>{{ $proj->client_id }}</span></td>
+                                <td><span>{{ $proj->client['client'] }}</span></td>
                                 <td>{{ $proj->nilai_kontrak }}</td>
                                 <td>{{ $proj->tgl_kontrak }}</td>
                                 <td>{{ $proj->no_kontrak }}</td>
