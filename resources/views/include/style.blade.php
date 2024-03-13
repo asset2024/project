@@ -6,6 +6,8 @@
 
 <!-- MAIN Project CSS file -->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-
 <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert/sweetalert.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendor/morrisjs/morris.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/charts-c3/plugin.css') }}" />

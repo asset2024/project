@@ -3,6 +3,7 @@
 use App\Http\Controllers\CashinController;
 use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\ProjectController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.admin.welcome');
 });
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::get('/project', [ProjectController::class, 'show'])->name('project');
 Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
