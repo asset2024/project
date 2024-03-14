@@ -56,7 +56,7 @@
                            <li class="{{ Request::is('client','users') ? 'active' : '' }}">
                                <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Master</span></a>
                                <ul>
-                                   <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="widgets-statistics.html">Client</a></li>
+                                   <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="/client">Client</a></li>
                                    <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="widgets-data.html">Users</a></li>
 
                                </ul>
