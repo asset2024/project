@@ -82,6 +82,7 @@
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="header">
+
                 <h2>Progres Proyek</h2>
                 <ul class="header-dropdown">
                     <li class="dropdown">
@@ -105,7 +106,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
+
                 <h2>Proyek</h2>
+
                 <ul class="header-dropdown">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -118,91 +121,91 @@
                 </ul>
             </div>
             <div class="body">
-                
+
                 <div class="table-responsive table_middel">
                     <table class="table m-b-0">
                         <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th>Patients</th>
-                                <th>Adress</th>
-                                <th>START Date</th>
-                                <th>END Date</th>
-                                <th>Priority</th>
-                                <th>Progress</th>
+                                <th>Project</th>
+                                <th>Nilai Kontrak</th>
+                                <th>Cash In</th>
+                                <th>Cash Out</th>
+                                <th>Devisiasi %</th>
+                                <th>Progress %</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><img src="../assets/images/xs/avatar3.jpg" class="rounded-circle avatar mr-2" alt="profile-image"><span>John</span></td>
-                                <td><span class="text-info">70 Bowman St. South Windsor, CT 06074</span></td>
-                                <td>Sept 13, 2017</td>
-                                <td>Sept 16, 2017</td>
-                                <td><span class="badge badge-warning">MEDIUM</span></td>
+                                <td><span class="text-info">Perbaikan Pagar Pengaman di Cluster PDM - A Tambun Field</span></td>
+                                <td>100,000,000,000</td>
+                                <td>50,000,000,000</td>
+                                <td>10,000,000,000</td>
+                                <td><span class="badge badge-warning">50%</span></td>
                                 <td>
                                     <div class="progress progress-xs">
                                         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"> <span class="sr-only">40% Complete</span> </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-success">Admit</span></td>
+                                <td><span class="badge badge-success">On Progress</span></td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td><img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar mr-2" alt="profile-image"><span>Jack Bird</span></td>
-                                <td><span class="text-info">123 6th St. Melbourne, FL 32904</span></td>
-                                <td>Sept 13, 2017</td>
-                                <td>Sept 22, 2017</td>
-                                <td><span class="badge badge-warning">MEDIUM</span></td>
+                                <td><span class="text-info">Pembuatan Taman Penghijauan di Area Depan SP Tambun</span></td>
+                                <td>70,000,000,000</td>
+                                <td>30,000,000,000</td>
+                                <td>5,000,000,000</td>
+                                <td><span class="badge badge-warning">70%</span></td>
                                 <td>
                                     <div class="progress progress-xs">
                                         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">100% Complete</span> </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-default">Discharge</span></td>
+                                <td><span class="badge badge-default">On Progress</span></td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td><img src="../assets/images/xs/avatar4.jpg" class="rounded-circle avatar mr-2" alt="profile-image"><span>Dean Otto</span></td>
-                                <td><span class="text-info">123 6th St. Melbourne, FL 32904</span></td>
-                                <td>Sept 13, 2017</td>
-                                <td>Sept 23, 2017</td>
-                                <td><span class="badge badge-warning">MEDIUM</span></td>
+                                <td><span class="text-info">Perapihan dan Perbaikan Area Portacamp di SP Tambun</span></td>
+                                <td>20,000,000,000</td>
+                                <td>5,000,000,000</td>
+                                <td>2,000,000,000</td>
+                                <td><span class="badge badge-warning">25%</span></td>
                                 <td>
                                     <div class="progress progress-xs">
                                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;"> <span class="sr-only">15% Complete</span> </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-success">Admit</span></td>
+                                <td><span class="badge badge-success">On Progress</span></td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td><img src="../assets/images/xs/avatar2.jpg" class="rounded-circle avatar mr-2" alt="profile-image"><span>Jack Bird</span></td>
-                                <td><span class="text-info">4 Shirley Ave. West Chicago, IL 60185</span></td>
-                                <td>Sept 17, 2017</td>
-                                <td>Sept 16, 2017</td>
-                                <td><span class="badge badge-success">LOW</span></td>
+                                <td><span class="text-info">Perbaikan Pagar Pengaman di Cluster PDM - A Tambun Field</span></td>
+                                <td>100,000,000,000</td>
+                                <td>50,000,000,000</td>
+                                <td>10,000,000,000</td>
+                                <td><span class="badge badge-success">80%</span></td>
                                 <td>
                                     <div class="progress progress-xs">
                                         <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> <span class="sr-only">100% Complete</span> </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-default">Discharge</span></td>
+                                <td><span class="badge badge-default">Close</span></td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td><img src="../assets/images/xs/avatar5.jpg" class="rounded-circle avatar mr-2" alt="profile-image"><span>Hughe L.</span></td>
-                                <td><span class="text-info">4 Shirley Ave. West Chicago, IL 60185</span></td>
-                                <td>Sept 18, 2017</td>
-                                <td>Sept 18, 2017</td>
-                                <td><span class="badge badge-danger">HIGH</span></td>
+                                <td><span class="text-info">Pengadaan & Pemasangan CIP Flowline ABG-C</span></td>
+                                <td>90,000,000,000</td>
+                                <td>50,000,000,000</td>
+                                <td>10,000,000,000</td>
+                                <td><span class="badge badge-danger">60%</span></td>
                                 <td>
                                     <div class="progress progress-xs">
                                         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"> <span class="sr-only">85% Complete</span> </div>
                                     </div>
                                 </td>
-                                <td><span class="badge badge-success">Admit</span></td>
+                                <td><span class="badge badge-success">On Progress</span></td>
                             </tr>
                         </tbody>
                     </table>
