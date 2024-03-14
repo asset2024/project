@@ -13,7 +13,66 @@
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="d-flex flex-row-reverse">
                 <div class="page_action">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addcontact">Add New</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal">Add New</button>
+                </div>
+            </div>
+            <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="inputModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="inputModalLabel">Form Input Data SPK</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="#" id="inputForm">
+                                @csrf
+                                
+                                <div class="form-group">
+                                    {{-- <label for="project_id">Project:</label>
+                                    <select id="project_id" name="project_id" class="form-control" required>
+                                        <option value="" selected disabled>Select Project</option>
+                                        @foreach($listProject as $project)
+                                            <option value="{{ $project->project_id }}">{{ $project->project }}</option>
+                                        @endforeach
+                                    </select> --}}
+                                <div class="form-group">
+                                        <label for="pekerjaan">Tanggal:</label>
+                                        <input type="date" id="pekerjaan" name="pekerjaan" class="form-control" required>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="no_spk">No SPK:</label>
+                                    <input type="text" id="no_spk" name="no_spk" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nilai_pekerjaan">Tanggal:</label>
+                                    <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mulai_pekerjaan">Invoice:</label>
+                                    <input type="text" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selesai_pekerjaan">Detail:</label>
+                                    <input type="text" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selesai_kontrak">Nominal:</label>
+                                    <input type="text" id="progres" name="progres" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">Status:</label>
+                                    <input type="text" id="status" name="status" class="form-control" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                            <button type="submit" form="inputForm" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -40,14 +99,12 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Project</th>
-                                <th>Client</th>
-                                <th>Nilai Kontrak</th>
-                                <th>Mulai Kontrak</th>
-                                <th>Selesai Kontrak</th>
-                                <th>Jml SPK</th>
+                                <th>Tgl</th>
+                                <th>No. SPK</th>
+                                <th>Invoice</th>
+                                <th>Detail</th>
+                                <th>Nominal</th>
                                 <th>Status</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,19 +117,15 @@
                                     <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
                                 </td>
                                 <td>
-                                    <h6 class="mb-0">Marshall Nichols</h6>
-                                    <span>marshall-n@gmail.com</span>
+                                    <h6 class="mb-0">1 Februari 2023</h6>
+                                    
                                 </td>
+                                <td><span>SPK-01/III/2024</span></td>
                                 <td><span>LA-0215</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>24 Jun, 2015</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                </td>
+                                <td><span>100</span></td>
+                                <td>500.000</td>
+                                <td>Lunas</td>
+                               
                             </tr>
                             <tr>
                                 <td class="width45">
@@ -83,19 +136,14 @@
                                     <img src="../assets/images/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
                                 </td>
                                 <td>
-                                    <h6 class="mb-0">Susie Willis</h6>
-                                    <span>sussie-w@gmail.com</span>
+                                    <h6 class="mb-0">1 Februari 2023</h6>
+                                    
                                 </td>
-                                <td><span>LA-0216</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>28 Jun, 2015</td>
-                                <td>Web Developer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                </td>
+                                <td><span>SPK-01/III/2024</span></td>
+                                <td><span>LA-0215</span></td>
+                                <td><span>100</span></td>
+                                <td>500.000</td>
+                                <td>Lunas</td>
                             </tr>
                         </tbody>
                     </table>
