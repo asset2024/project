@@ -6,8 +6,8 @@
             <h2>{{$title}}</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
-                <li class="breadcrumb-item">Finance</li>
-                <li class="breadcrumb-item active">Invoice</li>
+                <li class="breadcrumb-item">Master</li>
+                <li class="breadcrumb-item active">Client</li>
             </ul>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -20,7 +20,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="inputModalLabel">Form Input Data SPK</h5>
+                            <h5 class="modal-title" id="inputModalLabel">Form Input Data Client</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -38,12 +38,12 @@
                                         @endforeach
                                     </select> --}}
                                 <div class="form-group">
-                                        <label for="pekerjaan">Tanggal:</label>
-                                        <input type="date" id="pekerjaan" name="pekerjaan" class="form-control" required>
+                                        <label for="pekerjaan">Client:</label>
+                                        <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" required>
                                 </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_spk">No SPK:</label>
+                                    <label for="no_spk">Alamat:</label>
                                     <input type="text" id="no_spk" name="no_spk" class="form-control" required>
                                 </div>
                                 <div class="form-group">
@@ -51,7 +51,7 @@
                                     <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="mulai_pekerjaan">Invoice:</label>
+                                    <label for="mulai_pekerjaan">PIC:</label>
                                     <input type="text" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
@@ -59,7 +59,7 @@
                                     <input type="text" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="selesai_kontrak">Nominal:</label>
+                                    <label for="selesai_kontrak">No. Kontak:</label>
                                     <input type="text" id="progres" name="progres" class="form-control" required>
                                 </div>
                                 <div class="form-group">
@@ -99,12 +99,12 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Tgl</th>
-                                <th>No. SPK</th>
-                                <th>Invoice</th>
-                                <th>Detail</th>
-                                <th>Nominal</th>
+                                <th>Client</th>
+                                <th>Alamat</th>
+                                <th>PIC</th>
+                                <th>No. Kontak</th>
                                 <th>Status</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -117,14 +117,14 @@
                                     
                                 </td>
                                 <td>
-                                    <h6 class="mb-0">1 Februari 2023</h6>
+                                    <h6 class="mb-0">PT Pertamina</h6>
                                     
                                 </td>
-                                <td><span>SPK-01/III/2024</span></td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>100</span></td>
-                                <td>500.000</td>
-                                <td>Lunas</td>
+                                <td><span>Jakarta</span></td>
+                                <td><span>Hadi</span></td>
+                                <td><span>08156564573</span></td>
+                                <td>Aktif</td>
+                                
                                
                             </tr>
                             <tr>
@@ -136,14 +136,33 @@
                                     
                                 </td>
                                 <td>
-                                    <h6 class="mb-0">1 Februari 2023</h6>
+                                    <h6 class="mb-0">PT Petro China</h6>
                                     
                                 </td>
-                                <td><span>SPK-01/III/2024</span></td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>100</span></td>
-                                <td>500.000</td>
-                                <td>Lunas</td>
+                                <td><span>Jambi</span></td>
+                                <td><span>Amaludin</span></td>
+                                <td><span>08999999999</span></td>
+                                <td>Aktif</td>
+                                
+                            </tr>
+
+                            <tr>
+                                <td class="width45">
+                                    <label class="fancy-checkbox">
+                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
+                                        <span></span>
+                                    </label>
+                                    
+                                </td>
+                                <td>
+                                    <h6 class="mb-0">PT Pasir Petroleum</h6>
+                                    
+                                </td>
+                                <td><span>TB Simatupang</span></td>
+                                <td><span>Mulyadi</span></td>
+                                <td><span>08999999999</span></td>
+                                <td>Aktif</td>
+                                
                             </tr>
                         </tbody>
                     </table>

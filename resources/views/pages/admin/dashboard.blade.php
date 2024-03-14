@@ -6,8 +6,8 @@
             <h2>{{$title}}</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
-                <li class="breadcrumb-item">Project</li>
-                <li class="breadcrumb-item active">Project</li>
+                <li class="breadcrumb-item">Proyek</li>
+                <li class="breadcrumb-item active">Proyek</li>
             </ul>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
@@ -21,9 +21,9 @@
             <div class="body primary-bg text-light">
                 <div class="icon"><i class="fa fa-flag"></i> </div>
                 <div class="content">
-                    <div class="text mb-2 text-uppercase">Project</div>
+                    <div class="text mb-2 text-uppercase">Proyek</div>
                     <h1 class="number mb-0">32 </h1>
-                    <small class="text-lowercase font-12" style="color: #323A45;">dari 50 Project</small>
+                    <small class="text-lowercase font-12" style="color: #323A45;">dari 50 Proyek</small>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
             <div class="body bg-warning text-light">
                 <div class="icon"><i class="fa fa-thumbs-up"></i> </div>
                 <div class="content">
-                    <div class="text mb-2 text-uppercase">Outstanding</div>
+                    <div class="text mb-2 text-uppercase">Piutang</div>
                     <h1 class="number mb-0">Rp. 35</h1>
                     <small class="text-lowercase">Miliar</small>
                 </div>
@@ -82,7 +82,8 @@
     <div class="col-lg-3 col-md-6">
         <div class="card">
             <div class="header">
-                <h2>Progress Project</h2>
+
+                <h2>Progres Proyek</h2>
                 <ul class="header-dropdown">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -105,7 +106,9 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
-                <h2>Update Project</h2>
+
+                <h2>Proyek</h2>
+
                 <ul class="header-dropdown">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
