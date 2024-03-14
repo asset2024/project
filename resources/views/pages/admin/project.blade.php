@@ -6,14 +6,14 @@
             <h2>Project</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
-                <li class="breadcrumb-item">Project</li>
-                <li class="breadcrumb-item active">Project</li>
+                <li class="breadcrumb-item">Proyek</li>
+                <li class="breadcrumb-item active">Proyek</li>
             </ul>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="d-flex flex-row-reverse">
                 <div class="page_action">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal">Add New</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal">Tambah Data</button>
                 </div>
                 {{-- Modal --}}
             </div>
@@ -21,7 +21,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="inputModalLabel">Form Input Data Project</h5>
+                            <h5 class="modal-title" id="inputModalLabel">Form Input Data Proyek</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -30,13 +30,13 @@
                             <form method="POST" action="{{ route('store_project') }}" id="inputForm">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="project">Project:</label>
+                                    <label for="project">Proyek:</label>
                                     <input type="text" id="project" name="project" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="client_id">ID Client:</label>
+                                    <label for="client_id">ID Klien:</label>
                                     <select id="client_id" name="client_id" class="form-control" required>
-                                        <option value="" selected disabled>Select Client</option>
+                                        <option value="" selected disabled>Select Klien</option>
                                         @foreach($listClients as $client)
                                             <option value="{{ $client->client_id }}">{{ $client->client }}</option>
                                         @endforeach
@@ -100,7 +100,7 @@
                                     </label>
                                 </th>
                                 <th>Project</th>
-                                <th>Client</th>
+                                <th>Klien</th>
                                 <th>Nilai Kontrak</th>
                                 <th>Tanggal Kontrak</th>
                                 <th>Nomor Kontrak</th>
@@ -108,7 +108,7 @@
                                 <th>Mulai Kontrak</th>
                                 <th>Selesai Kontrak</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -153,13 +153,13 @@
                                             <form method="POST" action="#" id="editForm">
                                                 @csrf
                                                 <div class="form-group">
-                                                    <label for="project">Project:</label>
+                                                    <label for="project">Proyek:</label>
                                                     <input type="text" id="project" name="project" class="form-control" required value="{{ $proj->project }}">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="client_id">ID Client:</label>
+                                                    <label for="client_id">ID Klien:</label>
                                                     <select id="client_id" name="client_id" class="form-control" required>
-                                                        <option value="" selected disabled>Select Client</option>
+                                                        <option value="" selected disabled>Pilih Klien</option>
                                                         @foreach($listClients as $client)
                                                             <option value="{{ $client->client_id }}">{{ $client->client }}</option>
                                                         @endforeach

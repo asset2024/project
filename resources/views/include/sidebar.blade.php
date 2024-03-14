@@ -35,15 +35,15 @@
                                <a href="/dashboard"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
                            </li>
                            <li class="{{ Request::is('project','pekerjaan') ? 'active' : '' }}">
-                               <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Project</span></a>
+                               <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Proyek</span></a>
                                <ul>
-                                   <li class="{{ Request::is('project') ? 'active' : '' }}"><a href="/project">Project</a></li>
+                                   <li class="{{ Request::is('project') ? 'active' : '' }}"><a href="/project">Proyek</a></li>
                                    <li class="{{ Request::is('pekerjaan') ? 'active' : '' }}"><a href="/pekerjaan">Pekerjaan</a></li>
 
                                </ul>
                            </li>
                            <li class="{{ Request::is('cashin','cashout','invoice') ? 'active' : '' }}">
-                               <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Finance</span></a>
+                               <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Keuangan</span></a>
                                <ul>
                                    <li class="{{ Request::is('cashin') ? 'active' : '' }}"><a href="/cashin">Cash In</a></li>
                                    <li class="{{ Request::is('cashout') ? 'active' : '' }}"><a href="/cashout">Cash Out</a></li>
@@ -56,7 +56,7 @@
                            <li class="{{ Request::is('client','users') ? 'active' : '' }}">
                                <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Master</span></a>
                                <ul>
-                                   <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="/client">Client</a></li>
+                                   <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="/client">Klien</a></li>
                                    <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="widgets-data.html">Users</a></li>
 
                                </ul>
