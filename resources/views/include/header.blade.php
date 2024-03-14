@@ -12,7 +12,7 @@
           <div class="navbar-brand">
               <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-bars"></i></button>
               <button type="button" class="btn-toggle-fullwidth"><i class="fa fa-bars"></i></button>
-              <a href="index.html">PROJECT REPORT</a>
+              <a href="index.html">LAPORAN PROYEK</a>
           </div>
 
           <div class="navbar-right">

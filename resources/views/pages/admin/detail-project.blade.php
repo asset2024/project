@@ -132,14 +132,11 @@
                                     <span></span>
                                 </label>
                             </th>
-                            <th>Project</th>
-                            <th>Client</th>
-                            <th>Nilai Kontrak</th>
-                            <th>Mulai Kontrak</th>
-                            <th>Selesai Kontrak</th>
-                            <th>Jml SPK</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Tanggal</th>
+                            <th>Cash Out</th>
+                            <th>Detail</th>
+                            <th>Nominal</th>
+                            <th>Catatan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -152,19 +149,13 @@
                                 
                             </td>
                             <td>
-                                <h6 class="mb-0">Marshall Nichols</h6>
-                                <span>marshall-n@gmail.com</span>
+                                <h6 class="mb-0">13 Maret 2024</h6>
+                                
                             </td>
-                            <td><span>LA-0215</span></td>
-                            <td><span>+ 264-625-2583</span></td>
-                            <td>24 Jun, 2015</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                            </td>
+                            <td><span>-</span></td>
+                            <td><span>-</span></td>
+                            <td>50.000.000</td>
+                            <td>Lunas</td>
                         </tr>
                         <tr>
                             <td class="width45">
@@ -175,19 +166,13 @@
                                
                             </td>
                             <td>
-                                <h6 class="mb-0">Susie Willis</h6>
-                                <span>sussie-w@gmail.com</span>
+                                <h6 class="mb-0">13 Maret 2024</h6>
+                                
                             </td>
-                            <td><span>LA-0216</span></td>
-                            <td><span>+ 264-625-2583</span></td>
-                            <td>28 Jun, 2015</td>
-                            <td>Web Developer</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                            </td>
+                            <td><span>-</span></td>
+                            <td><span>-</span></td>
+                            <td>50.000.000</td>
+                            <td>Lunas</td>
                         </tr>
                     </tbody>
                 </table>
@@ -211,14 +196,11 @@
                                     <span></span>
                                 </label>
                             </th>
-                            <th>Project</th>
-                            <th>Client</th>
-                            <th>Nilai Kontrak</th>
-                            <th>Mulai Kontrak</th>
-                            <th>Selesai Kontrak</th>
-                            <th>Jml SPK</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Tanggal</th>
+                            <th>Cash Out</th>
+                            <th>Detail</th>
+                            <th>Nominal</th>
+                            <th>Catatan</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -231,19 +213,14 @@
                                 
                             </td>
                             <td>
-                                <h6 class="mb-0">Marshall Nichols</h6>
-                                <span>marshall-n@gmail.com</span>
+                                <h6 class="mb-0">13 Maret 2024</h6>
+                                
                             </td>
-                            <td><span>LA-0215</span></td>
-                            <td><span>+ 264-625-2583</span></td>
-                            <td>24 Jun, 2015</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                            </td>
+                            <td><span>-</span></td>
+                            <td><span>-</span></td>
+                            <td>50.000.000</td>
+                            <td>Lunas</td>
+                            
                         </tr>
                         <tr>
                             <td class="width45">
@@ -254,19 +231,14 @@
                                
                             </td>
                             <td>
-                                <h6 class="mb-0">Susie Willis</h6>
-                                <span>sussie-w@gmail.com</span>
+                                <h6 class="mb-0">13 Maret 2024</h6>
+                                
                             </td>
-                            <td><span>LA-0216</span></td>
-                            <td><span>+ 264-625-2583</span></td>
-                            <td>28 Jun, 2015</td>
-                            <td>Web Developer</td>
-                            <td>Web Designer</td>
-                            <td>Web Designer</td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                            </td>
+                            <td><span>-</span></td>
+                            <td><span>-</span></td>
+                            <td>50.000.000</td>
+                            <td>Lunas</td>
+                           
                         </tr>
                     </tbody>
                 </table>
@@ -334,6 +306,46 @@
                             <td><span>x</span></td>
                             <td>300.000</td>
                             <td>Lunas</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="card">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- tab 5 --}}
+    <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab5-tab">
+        <!-- Konten untuk tab 3 -->
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
+                    <thead class="thead-dark">
+                        <tr>
+                            
+                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="width45">
+                                
+                                
+                            </td>
+                           
+                            
+                        </tr>
+                        <tr>
+                            <td class="width45">
+                               
+                               
+                            </td>
+                            
                             
                         </tr>
                     </tbody>

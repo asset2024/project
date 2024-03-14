@@ -6,14 +6,14 @@
             <h2>{{$title}}</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
-                <li class="breadcrumb-item">Project</li>
+                <li class="breadcrumb-item">Proyek</li>
                 <li class="breadcrumb-item active">Pekerjaan</li>
             </ul>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="d-flex flex-row-reverse">
                 <div class="page_action">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#inputModal">Add New</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#inputModal">Tambah Data</button>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
                             @csrf
                             
                             <div class="form-group">
-                                <label for="project_id">Project:</label>
+                                <label for="project_id">Proyek:</label>
                                 <select id="project_id" name="project_id" class="form-control" required>
-                                    <option value="" selected disabled>Select Project</option>
+                                    <option value="" selected disabled>Pilih Proyek</option>
                                     @foreach($listProject as $project)
                                         <option value="{{ $project->project_id }}">{{ $project->project }}</option>
                                     @endforeach
@@ -60,7 +60,7 @@
                                 <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="selesai_kontrak">Progres:</label>
+                                <label for="progres">Progres:</label>
                                 <input type="text" id="progres" name="progres" class="form-control" required>
                             </div>
                             <div class="form-group">
@@ -100,7 +100,7 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Project</th>
+                                <th>Proyek</th>
                                 <th>Pekerjaan</th>
                                 <th>No. SPK</th>
                                 <th>Nilai Pekerjaan</th>
@@ -108,7 +108,7 @@
                                 <th>Selesai Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
