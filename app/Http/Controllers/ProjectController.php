@@ -16,12 +16,15 @@ class ProjectController extends Controller
         $title = 'Project';
         $project = Project::with('client')->get();
         $listClients = Client::all();
+        // Menghitung selisih hari antara tanggal sekarang dan tanggal selesai
+       
 
         // $project = Project::all();
         return view('pages.admin.project', [
             'title' => $title,
             'listProject' => $project,
             'listClients'=>$listClients
+            
         ]);
     }
 

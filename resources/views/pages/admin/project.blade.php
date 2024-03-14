@@ -130,7 +130,7 @@
                                 <td class="text-right">{{number_format ($proj->nilai_kontrak,0) }}</td>
                                 <td>{{ $proj->tgl_kontrak }}</td>
                                 <td>{{ $proj->no_kontrak }}</td>
-                                <td>{{ $proj->lama_pekerjaan }}</td>
+                                <td>{{ $proj->lama_pekerjaan }} Hari</td>
                                 <td>{{ $proj->mulai_kontrak }}</td>
                                 <td>{{ $proj->selesai_kontrak }}</td>
                                 <td>{{ $proj->status }}</td>
@@ -154,7 +154,7 @@
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="project">Project:</label>
-                                                    <input type="text" id="project" name="project" class="form-control" required>
+                                                    <input type="text" id="project" name="project" class="form-control" required value="{{ $proj->project }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="client_id">ID Client:</label>
@@ -207,4 +207,16 @@
     </div>
 </div>
 
+@endsection
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.edit-button').click(function(){
+            var projectId = $(this).closest('tr').find('td:eq(0)').text(); // Ubah 0 menjadi indeks kolom yang sesuai dengan id proyek
+            // Mengatur nilai input dalam modal edit
+            $('#editModal' + projectId).find('#project').val($(this).closest('tr').find('td:eq(1)').text()); // Ubah 1 menjadi indeks kolom yang sesuai dengan nama proyek
+            // Masukkan pengaturan input lainnya
+        });
+    });
+</script>
 @endsection

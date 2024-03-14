@@ -54,8 +54,8 @@ class PekerjaanController extends Controller
             // ]);
             
             $Pekerjaan = new Pekerjaan();
-            $Pekerjaan->pekerjaan = $request->pekerjaan;
             $Pekerjaan->project_id = $request->project_id;
+            $Pekerjaan->pekerjaan = $request->pekerjaan;
             $Pekerjaan->no_spk = $request->no_spk;
             $Pekerjaan->nilai_pekerjaan = $request->nilai_pekerjaan;
             $Pekerjaan->mulai_pekerjaan= $request->mulai_pekerjaan;

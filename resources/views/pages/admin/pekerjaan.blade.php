@@ -60,7 +60,7 @@
                                 <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="selesai_kontrak">Progres:</label>
+                                <label for="progres">Progres:</label>
                                 <input type="text" id="progres" name="progres" class="form-control" required>
                             </div>
                             <div class="form-group">

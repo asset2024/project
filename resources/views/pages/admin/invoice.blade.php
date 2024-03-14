@@ -114,7 +114,7 @@
                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                         <span></span>
                                     </label>
-                                    <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                    
                                 </td>
                                 <td>
                                     <h6 class="mb-0">1 Februari 2023</h6>
@@ -133,7 +133,7 @@
                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                         <span></span>
                                     </label>
-                                    <img src="../assets/images/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
+                                    
                                 </td>
                                 <td>
                                     <h6 class="mb-0">1 Februari 2023</h6>
