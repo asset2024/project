@@ -54,7 +54,7 @@ class ProjectController extends Controller
             // ]);
             
             $project = new Project();
-            $project->project = $request->project;
+            $project->project = $request->project;  
             $project->client_id = $request->client_id;
             $project->nilai_kontrak = $request->nilai_kontrak;
             $project->tgl_kontrak = $request->tgl_kontrak;

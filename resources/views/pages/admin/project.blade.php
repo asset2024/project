@@ -127,7 +127,7 @@
                                 </td> --}}
                                 <td><span>{{ $proj->project }}</span></td>
                                 <td><span>{{ $proj->client['client'] }}</span></td>
-                                <td>{{ $proj->nilai_kontrak }}</td>
+                                <td class="text-right">{{number_format ($proj->nilai_kontrak,0) }}</td>
                                 <td>{{ $proj->tgl_kontrak }}</td>
                                 <td>{{ $proj->no_kontrak }}</td>
                                 <td>{{ $proj->lama_pekerjaan }}</td>
@@ -135,10 +135,69 @@
                                 <td>{{ $proj->selesai_kontrak }}</td>
                                 <td>{{ $proj->status }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></button>
+                                    <a href="detail-project" class="btn btn-success">Detail</a>
                                 </td>
                             </tr>
+                            {{-- modal edit --}}
+                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="inputModalLabel">Form Edit Data Project</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="#" id="editForm">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="project">Project:</label>
+                                                    <input type="text" id="project" name="project" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="client_id">ID Client:</label>
+                                                    <select id="client_id" name="client_id" class="form-control" required>
+                                                        <option value="" selected disabled>Select Client</option>
+                                                        @foreach($listClients as $client)
+                                                            <option value="{{ $client->client_id }}">{{ $client->client }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nilai_kontrak">Nilai Kontrak:</label>
+                                                    <input type="number" id="nilai_kontrak" name="nilai_kontrak" class="form-control" step="0.01" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tgl_kontrak">Tanggal Kontrak:</label>
+                                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="no_kontrak">Nomor Kontrak:</label>
+                                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="mulai_kontrak">Mulai Kontrak:</label>
+                                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="selesai_kontrak">Selesai Kontrak:</label>
+                                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status">Status:</label>
+                                                    <input type="text" id="status" name="status" class="form-control" required>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                            <button type="submit" form="editForm" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>

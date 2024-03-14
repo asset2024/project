@@ -13,7 +13,7 @@
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="d-flex flex-row-reverse">
                 <div class="page_action">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addcontact">Add New</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#inputModal">Add New</button>
                 </div>
             </div>
         </div>
@@ -29,38 +29,39 @@
                     <div class="modal-body">
                         <form method="POST" action="{{ route('store_pekerjaan') }}" id="inputForm">
                             @csrf
+                            
                             <div class="form-group">
-                                <label for="project">Project:</label>
-                                <input type="text" id="project" name="project" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="client_id">Pekerjaan:</label>
-                                <select id="client_id" name="client_id" class="form-control" required>
-                                    <option value="" selected disabled>Select Client</option>
-                                    @foreach($listClients as $client)
-                                        <option value="{{ $client->client_id }}">{{ $client->client }}</option>
+                                <label for="project_id">Project:</label>
+                                <select id="project_id" name="project_id" class="form-control" required>
+                                    <option value="" selected disabled>Select Project</option>
+                                    @foreach($listProject as $project)
+                                        <option value="{{ $project->project_id }}">{{ $project->project }}</option>
                                     @endforeach
                                 </select>
+                            <div class="form-group">
+                                    <label for="pekerjaan">Pekerjaan:</label>
+                                    <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" required>
+                            </div>
                             </div>
                             <div class="form-group">
-                                <label for="nilai_kontrak">No SPK:</label>
-                                <input type="number" id="nilai_kontrak" name="nilai_kontrak" class="form-control" step="0.01" required>
+                                <label for="no_spk">No SPK:</label>
+                                <input type="text" id="no_spk" name="no_spk" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="tgl_kontrak">Nilai Pekerjaan:</label>
-                                <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" required>
+                                <label for="nilai_pekerjaan">Nilai Pekerjaan:</label>
+                                <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="no_kontrak">Mulai Pekerjaan:</label>
-                                <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" required>
+                                <label for="mulai_pekerjaan">Mulai Pekerjaan:</label>
+                                <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="mulai_kontrak">Selesai Pekerjaan:</label>
-                                <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" required>
+                                <label for="selesai_pekerjaan">Selesai Pekerjaan:</label>
+                                <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="selesai_kontrak">Progres:</label>
-                                <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" required>
+                                <input type="text" id="progres" name="progres" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="status">Status:</label>
@@ -83,7 +84,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="header">
-                <h2>Employee List</h2>
+                <h2>Data Pekerjaan</h2>
                 <ul class="header-dropdown">
                     <!-- <li><a href="javascript:void(0);" class="btn btn-info" data-toggle="modal" data-target="#addcontact">Add New</a></li> -->
                 </ul>
@@ -99,63 +100,45 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Pekerjaan</th>
                                 <th>Project</th>
+                                <th>Pekerjaan</th>
                                 <th>No. SPK</th>
                                 <th>Nilai Pekerjaan</th>
                                 <th>Mulai Pekerjaan</th>
                                 <th>Selesai Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($listPekerjaan as $kerja )
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                         <span></span>
                                     </label>
-                                    <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
+                                    {{-- <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
                                 </td>
                                 <td>
                                     <h6 class="mb-0">Marshall Nichols</h6>
                                     <span>marshall-n@gmail.com</span>
-                                </td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>24 Jun, 2015</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
+                                </td> --}}
+                                <td><span>{{ $kerja->project['project'] }}</span></td>
+                                <td><span>{{ $kerja->pekerjaan }}</span></td>
+                                <td>{{ $kerja->no_spk }}</td>
+                                <td class="text-right">{{ number_format($kerja->nilai_pekerjaan, 0) }}</td>
+                                <td>{{ $kerja->mulai_pekerjaan }}</td>
+                                <td>{{ $kerja->selesai_pekerjaan }}</td>
+                                <td>{{ $kerja->progres }}</td>
+                                <td>{{ $kerja->status }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="width45">
-                                    <label class="fancy-checkbox">
-                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                    <img src="../assets/images/xs/avatar2.jpg" class="rounded-circle avatar" alt="">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0">Susie Willis</h6>
-                                    <span>sussie-w@gmail.com</span>
-                                </td>
-                                <td><span>LA-0216</span></td>
-                                <td><span>+ 264-625-2583</span></td>
-                                <td>28 Jun, 2015</td>
-                                <td>Web Developer</td>
-                                <td>Web Designer</td>
-                                <td>Web Designer</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
-                                </td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

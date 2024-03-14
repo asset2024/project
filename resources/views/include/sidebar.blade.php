@@ -42,11 +42,11 @@
 
                                </ul>
                            </li>
-                           <li class="{{ Request::is('cash-in','cash-out','invoice') ? 'active' : '' }}">
+                           <li class="{{ Request::is('cashin','cashout','invoice') ? 'active' : '' }}">
                                <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Finance</span></a>
                                <ul>
-                                   <li class="{{ Request::is('cash-in') ? 'active' : '' }}"><a href="/cash-in">Cash In</a></li>
-                                   <li class="{{ Request::is('cash-out') ? 'active' : '' }}"><a href="/cash-out">Cash Out</a></li>
+                                   <li class="{{ Request::is('cashin') ? 'active' : '' }}"><a href="/cashin">Cash In</a></li>
+                                   <li class="{{ Request::is('cashout') ? 'active' : '' }}"><a href="/cashout">Cash Out</a></li>
                                    <li class="{{ Request::is('invoice') ? 'active' : '' }}"><a href="/invoice">Invoice</a></li>
                                </ul>
                            </li>

@@ -59,15 +59,14 @@ class PekerjaanController extends Controller
             $Pekerjaan->no_spk = $request->no_spk;
             $Pekerjaan->nilai_pekerjaan = $request->nilai_pekerjaan;
             $Pekerjaan->mulai_pekerjaan= $request->mulai_pekerjaan;
-            $Pekerjaan->lama_pekerjaan = '';
-            $Pekerjaan->mulai_kontrak = $request->mulai_kontrak;
-            $Pekerjaan->selesai_kontrak = $request->selesai_kontrak;
+            $Pekerjaan->selesai_pekerjaan = $request->selesai_pekerjaan;
+            $Pekerjaan->progres = $request->progres;
             $Pekerjaan->status = '1';
             $Pekerjaan->save();
         
            
-            if ($project->save()) {
-                return redirect()->back()->with('success', 'Data Project berhasil disimpan.');
+            if ($Pekerjaan->save()) {
+                return redirect()->back()->with('success', 'Data Pekerjaan berhasil disimpan.');
             } else {
                 return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
             }
