@@ -55,11 +55,11 @@ class ProjectController extends Controller
             //     'selesai_kontrak' => ' required|date',
             //     'status' => 'required'
             // ]);
-            
+            $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
             $project = new Project();
             $project->project = $request->project;  
-            $project->client_id = $request->client_id;
-            $project->nilai_kontrak = $request->nilai_kontrak;
+            $project->client_id = $request->id;
+            $project->nilai_kontrak = $nilai_kontrak;
             $project->tgl_kontrak = $request->tgl_kontrak;
             $project->no_kontrak = $request->no_kontrak;
             $project->lama_pekerjaan = '';
@@ -89,17 +89,41 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit()
     {
-        //
+       //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $id)
     {
-        //
+        
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
+        $project = Project::findOrFail($id);
+        $project->project = $request->project;
+        $project->client_id = $request->id;
+        $project->nilai_kontrak = $nilai_kontrak;
+        $project->tgl_kontrak = $request->tgl_kontrak;
+        $project->no_kontrak = $request->no_kontrak;
+        $project->mulai_kontrak = $request->mulai_kontrak;
+        $project->selesai_kontrak = $request->selesai_kontrak;
+        $project->status = $request->status;
+        $project->save();
+        
+        return redirect()->route('project')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**

@@ -13,15 +13,15 @@ class PekerjaanController extends Controller
      */
     public function index()
     {
-        $title = 'Pekerjaans';
+        $title = 'Pekerjaan';
         $Pekerjaan = Pekerjaan::with('project')->get();
         $listProject = Project::all();
-
         // $Pekerjaan = Pekerjaan::all();
         return view('pages.admin.Pekerjaan', [
             'title' => $title,
             'listPekerjaan' => $Pekerjaan,
             'listProject'=>$listProject
+            
         ]);
     }
 
@@ -84,17 +84,40 @@ class PekerjaanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Pekerjaan $pekerjaan)
-    {
+    public function edit($id) {
         //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pekerjaan $pekerjaan)
+    public function update(Request $request, $id)
     {
-        //
+        
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        $nilai_pekerjaan = str_replace(',', '', $request->nilai_kontrak);
+        $pekerjaans = Pekerjaan::findOrFail($id);
+        $pekerjaans->project_id = $request->project_id;
+        $pekerjaans->pekerjaan = $request->pekerjaan;
+        $pekerjaans->no_spk = $request->no_spk;
+        $pekerjaans->nilai_pekerjaan = $nilai_pekerjaan;
+        $pekerjaans->mulai_pekerjaan = $request->mulai_pekerjaan;
+        $pekerjaans->selesai_pekerjaan = $request->selesai_pekerjaan;
+        $pekerjaans->progres = $request->progres;
+        $pekerjaans->status = $request->status;
+        $pekerjaans->save();
+        
+        return redirect()->route('project')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**
