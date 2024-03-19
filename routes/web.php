@@ -40,9 +40,11 @@ Route::put('/pekerjaan/{id}', [PekerjaanController::class, 'update'])->name('upd
 
 Route::get('/cashin', [CashinController::class, 'index'])->name('cashin');
 Route::post('/cashin/store', [CashinController::class, 'store'])->name('store_cashin');
+Route::put('/cashin/{id}', [CashinController::class, 'update'])->name('update_cashin');
 
 Route::get('/cashout', [CashoutController::class, 'index'])->name('cashout');
 Route::post('/cashout/store', [CashoutController::class, 'store'])->name('store_cashout');
+Route::put('/cashout/{id}', [CashoutController::class, 'update'])->name('update_cashout');
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');

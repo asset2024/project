@@ -13,4 +13,5 @@ class Cashin extends Model
     {
         return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id', 'id');
     }
+    public $timestamps = false;
 }

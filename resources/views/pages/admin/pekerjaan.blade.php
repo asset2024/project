@@ -35,7 +35,6 @@
                                 <select id="project_id" name="project_id" class="form-control" required>
                                     <option value="" selected disabled>Pilih Proyek</option>
                                     @foreach($listProject as $project)
-
                                         <option value="{{ $project->id }}">{{ $project->project }}</option>
                                     @endforeach
                                 </select>
@@ -103,11 +102,11 @@
                                 <th>Selesai Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
-                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; background: #fff">Aksi</th>
+                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; background: #343a40">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($listPekerjaan as $kerja )
+                            @foreach ($listPekerjaan as $kerja)
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -124,14 +123,13 @@
                                 <td><span>{{ $kerja->pekerjaan }}</span></td>
                                 <td>{{ $kerja->no_spk }}</td>
                                 <td class="text-right">{{ number_format($kerja->nilai_pekerjaan, 0) }}</td>
-                                <td>{{ $kerja->mulai_pekerjaan }}</td>
-                                <td>{{ $kerja->selesai_pekerjaan }}</td>
+                                <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
                                 <td>{{ $kerja->progres }}</td>
                                 <td>{{ $kerja->status }}</td>
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
                                   
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $kerja->id }}"><i class="fa fa-edit"></i></button>
-
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
@@ -165,7 +163,7 @@
                                                     <input type="text" id="pekerjaan" name="pekerjaan" class="form-control"  value="{{ $kerja->pekerjaan }}" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="tgl_kontrak">No. SPK:</label>
+                                                    <label for="no_spk">No. SPK:</label>
                                                     <input type="text" id="no_spk" name="no_spk" class="form-control"
                                                     value="{{ $kerja->no_spk }}" required>
                                                 </div>

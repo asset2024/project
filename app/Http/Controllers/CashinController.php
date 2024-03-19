@@ -14,7 +14,7 @@ class CashinController extends Controller
      */
     public function index()
     {
-        $title = 'Cashin';
+        $title = 'Cash In';
         $cashin = Cashin::with('pekerjaan')->get();
         $listPekerjaan = Pekerjaan::all();
 
@@ -93,9 +93,33 @@ class CashinController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cashin $cashin)
+    public function update(Request $request, $id)
     {
-        //
+        
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        
+        $nominal = str_replace(',', '', $request->nominal);
+        $cashins = Cashin::findOrFail($id);
+        $cashins->pekerjaan_id = $request->id;
+        $cashins->tgl_transaksi = $request->tgl_transaksi;
+        $cashins->transaksi = $request->transaksi;
+        $cashins->nominal = $nominal;
+        $cashins->dari = $request->dari;
+        $cashins->catatan = $request->catatan;
+        $cashins->status = $request->status;
+        $cashins->save();
+        
+        return redirect()->route('cashin')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**
