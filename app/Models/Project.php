@@ -9,12 +9,12 @@ use Carbon\Carbon;
 class Project extends Model
 {
     use HasFactory;
-    protected $table='projects';
+    protected $table = 'projects';
     public function client()
     {
-        return $this->belongsTo(Client::class, 'client_id', 'client_id');
+        return $this->belongsTo(Client::class, 'client_id', 'id');
     }
-    
+
 
     public function getLamaPekerjaanAttribute()
     {
@@ -22,5 +22,4 @@ class Project extends Model
         $selesaiKontrak = Carbon::parse($this->selesai_kontrak);
         return Carbon::now()->diffInDays($selesaiKontrak);
     }
-    };
-
+};

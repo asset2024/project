@@ -29,19 +29,19 @@
                     <div class="modal-body">
                         <form method="POST" action="{{ route('store_pekerjaan') }}" id="inputForm">
                             @csrf
-                            
+
                             <div class="form-group">
                                 <label for="project_id">Proyek:</label>
                                 <select id="project_id" name="project_id" class="form-control" required>
                                     <option value="" selected disabled>Pilih Proyek</option>
                                     @foreach($listProject as $project)
-                                        <option value="{{ $project->project_id }}">{{ $project->project }}</option>
+                                    <option value="{{ $project->project_id }}">{{ $project->project }}</option>
                                     @endforeach
                                 </select>
-                            <div class="form-group">
+                                <div class="form-group">
                                     <label for="pekerjaan">Pekerjaan:</label>
                                     <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" required>
-                            </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="no_spk">No SPK:</label>
@@ -59,14 +59,8 @@
                                 <label for="selesai_pekerjaan">Selesai Pekerjaan:</label>
                                 <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label for="progres">Progres:</label>
-                                <input type="text" id="progres" name="progres" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="status">Status:</label>
-                                <input type="text" id="status" name="status" class="form-control" required>
-                            </div>
+
+
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -76,8 +70,8 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 
 <div class="row clearfix">
@@ -108,7 +102,7 @@
                                 <th>Selesai Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
-                                <th>Aksi</th>
+                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; background: #fff">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -133,7 +127,7 @@
                                 <td>{{ $kerja->selesai_pekerjaan }}</td>
                                 <td>{{ $kerja->progres }}</td>
                                 <td>{{ $kerja->status }}</td>
-                                <td>
+                                <td style="position: sticky; right: 0; z-index: 1; background: #fff">
                                     <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                 </td>
