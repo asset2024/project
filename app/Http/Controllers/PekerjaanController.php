@@ -105,9 +105,8 @@ class PekerjaanController extends Controller
         //     'selesai_kontrak' => 'required|date',
         //     'status' => 'required',
         // ]);
-        $nilai_pekerjaan = str_replace(',', '', $request->nilai_kontrak);
+        $nilai_pekerjaan = str_replace(',', '', $request->nilai_pekerjaan);
         $pekerjaans = Pekerjaan::findOrFail($id);
-        $pekerjaans->project_id = $request->project_id;
         $pekerjaans->pekerjaan = $request->pekerjaan;
         $pekerjaans->no_spk = $request->no_spk;
         $pekerjaans->nilai_pekerjaan = $nilai_pekerjaan;
@@ -117,7 +116,7 @@ class PekerjaanController extends Controller
         $pekerjaans->status = $request->status;
         $pekerjaans->save();
         
-        return redirect()->route('project')->with('success', 'Data proyek berhasil diperbarui.');
+        return redirect()->route('pekerjaan')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**
