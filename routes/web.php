@@ -28,8 +28,10 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
+Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
 Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
 Route::post('/pekerjaan/store', [PekerjaanController::class, 'store'])->name('store_pekerjaan');
+Route::put('/pekerjaan/{id}', [PekerjaanController::class, 'update'])->name('update_pekerjaan');
 Route::get('/cashin', [CashinController::class, 'index'])->name('cashin');
 Route::post('/cashin/store', [CashinController::class, 'store'])->name('store_cashin');
 Route::get('/cashout', [CashoutController::class, 'index'])->name('cashout');

@@ -31,11 +31,11 @@
                             @csrf
                             
                             <div class="form-group">
-                                <label for="project_id">Proyek:</label>
+                                <label for="id">Proyek:</label>
                                 <select id="project_id" name="project_id" class="form-control" required>
                                     <option value="" selected disabled>Pilih Proyek</option>
                                     @foreach($listProject as $project)
-                                        <option value="{{ $project->project_id }}">{{ $project->project }}</option>
+                                        <option value="{{ $project->id }}">{{ $project->project }}</option>
                                     @endforeach
                                 </select>
                             <div class="form-group">
@@ -134,10 +134,72 @@
                                 <td>{{ $kerja->progres }}</td>
                                 <td>{{ $kerja->status }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $kerja->id }}"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                 </td>
                             </tr>
+                            {{-- modal edit --}}
+                            <div class="modal fade" id="editModal{{ $kerja->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $kerja->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel{{ $kerja->id }}">Form Edit Data Pekerjaan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('update_pekerjaan', ['id' => $kerja->id]) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="project">Project:</label>
+                                                    <select id="project" name="project" class="form-control">
+                                                        @foreach ($listProject as $proj)
+                                                            <option value="{{ $proj->id }}" {{ $kerja->project_id == $proj->id ? 'selected' : '' }}>
+                                                                {{ $proj->project }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="pekerjaan">Pekerjaan:</label>
+                                                    <input type="text" id="pekerjaan" name="pekerjaan" class="form-control"  value="{{ $kerja->pekerjaan }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tgl_kontrak">No. SPK:</label>
+                                                    <input type="text" id="no_spk" name="no_spk" class="form-control"
+                                                    value="{{ $kerja->no_spk }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="no_kontrak">Nilai Pekerjaan:</label>
+                                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" 
+                                                    value="#"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="mulai_kontrak">Mulai Kontrak:</label>
+                                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" value="#"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="selesai_kontrak">Selesai Kontrak:</label>
+                                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" value="#"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="status">Status:</label>
+                                                    <input type="text" id="status" name="status" class="form-control" 
+                                                    value="#"required>
+                                                </div>
+                                            
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                </div>
+                            </div>
                             @endforeach
                         </tbody>
                     </table>
