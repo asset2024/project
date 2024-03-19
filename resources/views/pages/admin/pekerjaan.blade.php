@@ -173,22 +173,27 @@
                                                     value="{{ $kerja->no_spk }}" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="no_kontrak">Nilai Pekerjaan:</label>
-                                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" 
-                                                    value="#"required>
+                                                    <label for="nilai_pekerjaan">Nilai Pekerjaan:</label>
+                                                    <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" 
+                                                    value="{{ number_format($kerja->nilai_pekerjaan, 0) }}"required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="mulai_kontrak">Mulai Kontrak:</label>
-                                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" value="#"required>
+                                                    <label for="mulai_pekerjaan">Mulai Pekerjaan:</label>
+                                                    <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" value="{{ $kerja->mulai_pekerjaan }}"required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="selesai_kontrak">Selesai Kontrak:</label>
-                                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" value="#"required>
+                                                    <label for="selesai_pekerjaan">Selesai pekerjaan:</label>
+                                                    <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" value="{{ $kerja->selesai_pekerjaan }}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="progres">Progres:</label>
+                                                    <input type="text" id="progres" name="progres" class="form-control" 
+                                                    value="{{ $kerja->progres }}"required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status">Status:</label>
                                                     <input type="text" id="status" name="status" class="form-control" 
-                                                    value="#"required>
+                                                    value="{{ $kerja->status }}"required>
                                                 </div>
                                             
                                                 </div>
