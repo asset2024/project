@@ -17,33 +17,47 @@ class ProjectController extends Controller
         $project = Project::with('client')->get();
         $listClients = Client::all();
         // Menghitung selisih hari antara tanggal sekarang dan tanggal selesai
-       
+
 
         // $project = Project::all();
         return view('pages.admin.project', [
             'title' => $title,
             'listProject' => $project,
-            'listClients'=>$listClients
-            
+            'listClients' => $listClients
+
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function detail()
+    {
+        $title = 'Detail Proyek';
+
+        return view('pages.admin.detail-project2', [
+            'title' => $title,
+
+        ]);
+    }
+
+    public function detail2()
+    {
+        $title = 'Detail Proyek';
+
+        return view('pages.admin.detail-project', [
+            'title' => $title,
+
+        ]);
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         // dd($request);
-        var_dump($request->all());
-        {
+        var_dump($request->all()); {
             // $request->validate([
             //     'project' => 'required',
             //     'client_id' => 'required',
@@ -55,11 +69,13 @@ class ProjectController extends Controller
             //     'selesai_kontrak' => ' required|date',
             //     'status' => 'required'
             // ]);
+
             $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
             $project = new Project();
             $project->project = $request->project;  
             $project->client_id = $request->id;
             $project->nilai_kontrak = $nilai_kontrak;
+
             $project->tgl_kontrak = $request->tgl_kontrak;
             $project->no_kontrak = $request->no_kontrak;
             $project->lama_pekerjaan = '';
@@ -67,37 +83,32 @@ class ProjectController extends Controller
             $project->selesai_kontrak = $request->selesai_kontrak;
             $project->status = '1';
             $project->save();
-        
-           
+
+
             if ($project->save()) {
                 return redirect()->back()->with('success', 'Data Project berhasil disimpan.');
             } else {
                 return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
             }
-            
-        } 
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Project $project)
     {
-        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit()
     {
-       //
     }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
+
     {
         
         // $request->validate([
@@ -126,9 +137,7 @@ class ProjectController extends Controller
         return redirect()->route('project')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Project $project)
     {
         //

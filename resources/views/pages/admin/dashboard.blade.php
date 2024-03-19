@@ -127,7 +127,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>#</th>
-                                <th>Project</th>
+                                <th style="width: 10px;">Project</th>
                                 <th>Nilai Kontrak</th>
                                 <th>Cash In</th>
                                 <th>Cash Out</th>
@@ -139,7 +139,7 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><span class="text-info">Perbaikan Pagar Pengaman di Cluster PDM - A Tambun Field</span></td>
+                                <td style="white-space: pre-wrap;"><span class="text-info">Perbaikan Pagar Pengaman di Cluster PDM - A Tambun Field</span></td>
                                 <td>100,000,000,000</td>
                                 <td>50,000,000,000</td>
                                 <td>10,000,000,000</td>

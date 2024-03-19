@@ -38,6 +38,7 @@
                                     <select id="id" name="id" class="form-control" required>
                                         <option value="" selected disabled>Select Klien</option>
                                         @foreach($listClients as $client)
+
                                             <option value="{{ $client->id }}">{{ $client->client }}</option>
                                         @endforeach
                                     </select>
@@ -99,16 +100,13 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Project</th>
-                                <th>Klien</th>
-                                <th>Nilai Kontrak</th>
-                                <th>Tanggal Kontrak</th>
-                                <th>Nomor Kontrak</th>
-                                <th>Lama Pekerjaan</th>
-                                <th>Mulai Kontrak</th>
-                                <th>Selesai Kontrak</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
+                                <th style="text-align: center;">Project</th>
+                                <th style="text-align: center;">Mitra</th>
+                                <th style="text-align: center;">Nilai Kontrak</th>
+                                <th style="text-align: center;">Waktu Kontrak</th>
+                                <th style="text-align: center;">Lama Pekerjaan</th>
+                                <th style="text-align: center;">Status</th>
+                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -125,18 +123,19 @@
                                     <h6 class="mb-0">Marshall Nichols</h6>
                                     <span>marshall-n@gmail.com</span>
                                 </td> --}}
-                                <td><span>{{ $proj->project }}</span></td>
+                                <td><span><b>{{ $proj->project }}</b><br>{{ $proj->no_kontrak }}</span></td>
                                 <td><span>{{ $proj->client['client'] }}</span></td>
-                                <td class="text-right">{{number_format ($proj->nilai_kontrak,0) }}</td>
-                                <td>{{ $proj->tgl_kontrak }}</td>
-                                <td>{{ $proj->no_kontrak }}</td>
+                                <td class="text-left">Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
+                                <td>{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
                                 <td>{{ $proj->lama_pekerjaan }} Hari</td>
-                                <td>{{ $proj->mulai_kontrak }}</td>
-                                <td>{{ $proj->selesai_kontrak }}</td>
                                 <td>{{ $proj->status }}</td>
-                                <td>
+
+                                <td style="position: sticky; right: 0; z-index: 1; background: #fff">
+
+                              
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $proj->id }}"><i class="fa fa-edit"></i></button>
                                     <a href="detail-project" class="btn btn-success"><i class="icon-eye"></i></a>
+
                                 </td>
                             </tr>
                             {{-- modal edit --}}
@@ -159,6 +158,7 @@
                                                 </div>
                                                 
                                                 <div class="form-group">
+
                                                     <label for="id">ID Klien:</label>
                                                     <select class="form-control" id="id_client" name="id_client">
                                                             <option value="" disabled>Pilih Client</option>
@@ -166,6 +166,7 @@
                                                             <option value="{{ $client->id }}" {{ $proj->client_id == $client->id ? 'selected' : '' }}>{{ $client->client }}</option>
                                                             @endforeach
                                                     </select>
+
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nilai_kontrak">Nilai Kontrak:</label>
@@ -216,8 +217,8 @@
 @endsection
 @section('scripts')
 <script>
-    $(document).ready(function(){
-        $('.edit-button').click(function(){
+    $(document).ready(function() {
+        $('.edit-button').click(function() {
             var projectId = $(this).closest('tr').find('td:eq(0)').text(); // Ubah 0 menjadi indeks kolom yang sesuai dengan id proyek
             // Mengatur nilai input dalam modal edit
             $('#editModal' + projectId).find('#project').val($(this).closest('tr').find('td:eq(1)').text()); // Ubah 1 menjadi indeks kolom yang sesuai dengan nama proyek
