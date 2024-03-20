@@ -14,7 +14,7 @@ class CashoutController extends Controller
      */
     public function index()
     {
-        $title = 'Cashins';
+        $title = 'Cash Out';
         $cashout = Cashout::with('pekerjaan')->get();
         $listPekerjaan = Pekerjaan::all();
 
@@ -40,7 +40,7 @@ class CashoutController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        var_dump($request->all());
+        // dd($request->all());
         {
             // $request->validate([
             //     'project' => 'required',
@@ -93,9 +93,33 @@ class CashoutController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cashout $cashout)
+    public function update(Request $request, $id)
     {
-        //
+        
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        
+        $nominal = str_replace(',', '', $request->nominal);
+        $cashout = Cashout::findOrFail($id);
+        $cashout->pekerjaan_id = $request->id;
+        $cashout->tgl_transaksi = $request->tgl_transaksi;
+        $cashout->transaksi = $request->transaksi;
+        $cashout->nominal = $nominal;
+        $cashout->tujuan = $request->tujuan;
+        $cashout->catatan = $request->catatan;
+        $cashout->status = $request->status;
+        $cashout->save();
+        
+        return redirect()->route('cashout')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**
