@@ -47,8 +47,8 @@
                                     <input type="text" id="no_spk" name="no_spk" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nilai_pekerjaan">Tanggal:</label>
-                                    <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
+                                    <label for="tgl">Tanggal:</label>
+                                    <input type="date" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="mulai_pekerjaan">Invoice:</label>
