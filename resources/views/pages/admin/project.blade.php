@@ -39,7 +39,7 @@
                                         <option value="" selected disabled>Select Klien</option>
                                         @foreach($listClients as $client)
 
-                                            <option value="{{ $client->id }}">{{ $client->client }}</option>
+                                        <option value="{{ $client->id }}">{{ $client->client }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -126,19 +126,19 @@
                                 <td><span><b>{{ $proj->project }}</b><br>{{ $proj->no_kontrak }}</span></td>
                                 <td><span>{{ $proj->client['client'] }}</span></td>
                                 <td class="text-left">Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
-                                <td>{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} - {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} -<br> {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
                                 <td>{{ $proj->lama_pekerjaan }} Hari</td>
                                 <td>{{ $proj->status }}</td>
 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
 
-                              
+
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $proj->id }}"><i class="fa fa-edit"></i></button>
                                     <a href="detail-project" class="btn btn-success"><i class="icon-eye"></i></a>
 
                                 </td>
                             </tr>
-                            {{-- modal edit --}}
+                            <!-- modal edit -->
                             <div class="modal fade" id="editModal{{ $proj->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $proj->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -156,53 +156,51 @@
                                                     <label for="project">Proyek:</label>
                                                     <input type="text" id="project" name="project" class="form-control" required value="{{ $proj->project }}">
                                                 </div>
-                                                
+
                                                 <div class="form-group">
 
                                                     <label for="id">ID Klien:</label>
                                                     <select class="form-control" id="id_client" name="id_client">
-                                                            <option value="" disabled>Pilih Client</option>
-                                                            @foreach ($listClients as $client)
-                                                            <option value="{{ $client->id }}" {{ $proj->client_id == $client->id ? 'selected' : '' }}>{{ $client->client }}</option>
-                                                            @endforeach
-                                                    </select>
+                                                        <option value="" disabled>Pilih Client</option>
+                                                        @foreach ($listClients as $client)
+                                                        <option value="{{ $client->id }}" {{ $proj->client_id == $client->id ? 'selected' : '' }}>{{ $client->client }}</option>
+                                                        @endforeach
+                                                           
+                                                    </select>
 
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nilai_kontrak">Nilai Kontrak:</label>
-                                                    <input type="text" id="nilai_kontrak" name="nilai_kontrak" class="form-control"  value="{{ number_format($proj->nilai_kontrak, 0) }}" required>
+                                                    <input type="text" id="nilai_kontrak" name="nilai_kontrak" class="form-control" value="{{ number_format($proj->nilai_kontrak, 0) }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tgl_kontrak">Tanggal Kontrak:</label>
-                                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control"
-                                                    value="{{ $proj->tgl_kontrak }}" required>
+                                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" value="{{ $proj->tgl_kontrak }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="no_kontrak">Nomor Kontrak:</label>
-                                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" 
-                                                    value="{{ $proj->no_kontrak }}"required>
+                                                    <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" value="{{ $proj->no_kontrak }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="mulai_kontrak">Mulai Kontrak:</label>
-                                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" value="{{ $proj->mulai_kontrak }}"required>
+                                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" value="{{ $proj->mulai_kontrak }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="selesai_kontrak">Selesai Kontrak:</label>
-                                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" value="{{ $proj->selesai_kontrak }}"required>
+                                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" value="{{ $proj->selesai_kontrak }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status">Status:</label>
-                                                    <input type="text" id="status" name="status" class="form-control" 
-                                                    value="{{ $proj->status }}"required>
+                                                    <input type="text" id="status" name="status" class="form-control" value="{{ $proj->status }}" required>
                                                 </div>
-                                            
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                                </div>
-                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             @endforeach
