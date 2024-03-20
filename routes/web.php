@@ -30,7 +30,7 @@ Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
 
 Route::get('/detail-project', [ProjectController::class, 'detail'])->name('detail-project');
-Route::get('/detail-project', [ProjectController::class, 'detail2'])->name('detail-project');
+Route::get('/detail-project2', [ProjectController::class, 'detail2'])->name('detail-project2');
 
 
 Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
