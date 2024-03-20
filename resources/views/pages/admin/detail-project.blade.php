@@ -119,6 +119,7 @@
                                     <form method="POST" action="{{-- route('update_project', ['id' => $proj->id]) --}}">
                                         @csrf
                                         @method('PUT')
+
                                         <div class="form-group">
                                             <label for="tgl_kontrak">Tanggal :</label>
                                             <input type="date" id="tanggal" name="tanggal" class="form-control" value="{{-- $proj->tgl_kontrak --}}" required>
