@@ -32,7 +32,7 @@ class ProjectController extends Controller
     {
         $title = 'Detail Proyek';
 
-        return view('pages.admin.detail-project2', [
+        return view('pages.admin.detail-project', [
             'title' => $title,
 
         ]);
@@ -42,7 +42,7 @@ class ProjectController extends Controller
     {
         $title = 'Detail Proyek';
 
-        return view('pages.admin.detail-project', [
+        return view('pages.admin.detail-project2', [
             'title' => $title,
 
         ]);
@@ -72,7 +72,7 @@ class ProjectController extends Controller
 
             $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
             $project = new Project();
-            $project->project = $request->project;  
+            $project->project = $request->project;
             $project->client_id = $request->id;
             $project->nilai_kontrak = $nilai_kontrak;
 
@@ -110,7 +110,7 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
 
     {
-        
+
         // $request->validate([
 
         //     'project' => 'required',
@@ -133,7 +133,7 @@ class ProjectController extends Controller
         $project->selesai_kontrak = $request->selesai_kontrak;
         $project->status = $request->status;
         $project->save();
-        
+
         return redirect()->route('project')->with('success', 'Data proyek berhasil diperbarui.');
     }
 

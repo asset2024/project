@@ -36,7 +36,7 @@
                                     <option value="" selected disabled>Pilih Proyek</option>
                                     @foreach($listProject as $project)
 
-                                        <option value="{{ $project->id }}">{{ $project->project }}</option>
+                                    <option value="{{ $project->id }}">{{ $project->project }}</option>
                                     @endforeach
                                 </select>
                                 <div class="form-group">
@@ -99,11 +99,10 @@
                                 <th>Pekerjaan</th>
                                 <th>No. SPK</th>
                                 <th>Nilai Pekerjaan</th>
-                                <th>Mulai Pekerjaan</th>
-                                <th>Selesai Pekerjaan</th>
+                                <th>Waktu Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
-                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; background: #fff">Aksi</th>
+                                <th class="action-col" style="position: sticky; right: 0; z-index: 1; text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,12 +123,13 @@
                                 <td><span>{{ $kerja->pekerjaan }}</span></td>
                                 <td>{{ $kerja->no_spk }}</td>
                                 <td class="text-right">{{ number_format($kerja->nilai_pekerjaan, 0) }}</td>
-                                <td>{{ $kerja->mulai_pekerjaan }}</td>
-                                <td>{{ $kerja->selesai_pekerjaan }}</td>
+                                <td>{{ $kerja->mulai_pekerjaan }}-<br>
+                                    {{ $kerja->selesai_pekerjaan }}
+                                </td>
                                 <td>{{ $kerja->progres }}</td>
                                 <td>{{ $kerja->status }}</td>
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
-                                  
+
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $kerja->id }}"><i class="fa fa-edit"></i></button>
 
                                     <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
@@ -153,53 +153,49 @@
                                                     <label for="project">Project:</label>
                                                     <select id="project" name="project" class="form-control">
                                                         @foreach ($listProject as $proj)
-                                                            <option value="{{ $proj->id }}" {{ $kerja->project_id == $proj->id ? 'selected' : '' }}>
-                                                                {{ $proj->project }}
-                                                            </option>
+                                                        <option value="{{ $proj->id }}" {{ $kerja->project_id == $proj->id ? 'selected' : '' }}>
+                                                            {{ $proj->project }}
+                                                        </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <label for="pekerjaan">Pekerjaan:</label>
-                                                    <input type="text" id="pekerjaan" name="pekerjaan" class="form-control"  value="{{ $kerja->pekerjaan }}" required>
+                                                    <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" value="{{ $kerja->pekerjaan }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="tgl_kontrak">No. SPK:</label>
-                                                    <input type="text" id="no_spk" name="no_spk" class="form-control"
-                                                    value="{{ $kerja->no_spk }}" required>
+                                                    <input type="text" id="no_spk" name="no_spk" class="form-control" value="{{ $kerja->no_spk }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nilai_pekerjaan">Nilai Pekerjaan:</label>
-                                                    <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" 
-                                                    value="{{ number_format($kerja->nilai_pekerjaan, 0) }}"required>
+                                                    <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" value="{{ number_format($kerja->nilai_pekerjaan, 0) }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="mulai_pekerjaan">Mulai Pekerjaan:</label>
-                                                    <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" value="{{ $kerja->mulai_pekerjaan }}"required>
+                                                    <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" value="{{ $kerja->mulai_pekerjaan }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="selesai_pekerjaan">Selesai pekerjaan:</label>
-                                                    <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" value="{{ $kerja->selesai_pekerjaan }}"required>
+                                                    <input type="date" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" value="{{ $kerja->selesai_pekerjaan }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="progres">Progres:</label>
-                                                    <input type="text" id="progres" name="progres" class="form-control" 
-                                                    value="{{ $kerja->progres }}"required>
+                                                    <input type="text" id="progres" name="progres" class="form-control" value="{{ $kerja->progres }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="status">Status:</label>
-                                                    <input type="text" id="status" name="status" class="form-control" 
-                                                    value="{{ $kerja->status }}"required>
+                                                    <input type="text" id="status" name="status" class="form-control" value="{{ $kerja->status }}" required>
                                                 </div>
-                                            
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                                </div>
-                                            </form>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             @endforeach
