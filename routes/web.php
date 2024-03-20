@@ -62,4 +62,5 @@ Route::post('/cashout/store', [CashoutController::class, 'store'])->name('store_
 Route::put('/cashout/{id}', [CashoutController::class, 'update'])->name('update_cashout');
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
+Route::post('/invoice/store', [InvoiceController::class, 'store'])->name('store_invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');

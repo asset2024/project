@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Pekerjaan;   
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -13,10 +14,14 @@ class InvoiceController extends Controller
     public function index()
     {
         $title = 'Invoice';
+        $invoice = Invoice::with('pekerjaan')->get();
+        $listPekerjaan = Pekerjaan::all();
 
         // $invoice = Invoice::all();
         return view('pages.admin.invoice', [
             'title' => $title,
+            'invoice'=> $invoice,
+            'listPekerjaan'=> $listPekerjaan
             //  'listInvoice' => $invoice,
         ]);
     }
@@ -34,7 +39,38 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        var_dump($request->all());
+        {
+            // $request->validate([
+            //     'project' => 'required',
+            //     'client_id' => 'required',
+            //     'nilai_kontrak' => 'required|numeric',
+            //     'tgl_kontrak' => 'required|date',
+            //     'no_kontrak' =>  'required|numeric',
+            //     'lama_pekerjaan' => 'required|numeric', 
+            //     'mulai_kontrak' => 'required|date',
+            //     'selesai_kontrak' => ' required|date',
+            //     'status' => 'required'
+            // ]);
+            
+            $inv = new Invoice();
+            $inv->pekerjaan_id = $request->pekerjaan_id;
+            $inv->tgl_invoice = $request->tgl_invoice;
+            $inv->invoice = $request->invoice;
+            $inv->detail = $request->detail;
+            $inv->nominal = $request->nominal;
+            $inv->status = '1';
+            $inv->save();
+        
+           
+            if ($inv->save()) {
+                return redirect()->back()->with('success', 'Data Pekerjaan berhasil disimpan.');
+            } else {
+                return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
+            }
+            
+        } 
     }
 
     /**
