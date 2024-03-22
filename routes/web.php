@@ -12,6 +12,7 @@ use App\Http\Controllers\PasirjadiController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PltmController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,4 +64,7 @@ Route::put('/cashout/{id}', [CashoutController::class, 'update'])->name('update_
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
 Route::post('/invoice/store', [InvoiceController::class, 'store'])->name('store_invoice');
+Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');
+
+Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');

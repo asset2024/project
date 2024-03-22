@@ -92,9 +92,32 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, $id)
     {
-        //
+        
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        
+        $nominal = str_replace(',', '', $request->nominal);
+        $invoices = Invoice::findOrFail($id);
+        $invoices->pekerjaan_id = $request->id;
+        $invoices->tgl_invoice = $request->tgl_invoice;
+        $invoices->invoice = $request->invoice;
+        $invoices->detail = $request->detail;
+        $invoices->nominal = $nominal;
+        $invoices->status = $request->status;
+        $invoices->save();
+        
+        return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**

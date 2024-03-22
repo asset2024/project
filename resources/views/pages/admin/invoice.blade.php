@@ -116,11 +116,10 @@
                                 <span>marshall-n@gmail.com</span>
                             </td> --}}
                             <td><span>{{ $invo->pekerjaan['pekerjaan'] }}</span></td>
-                            <td><span>{{ $invo->tgl_transaksi }}</span></td>
-                            <td>{{ $invo->transaksi }}</td>
-                            <td class="text-right">{{ number_format($invo->nominal, 0) }}</td>
-                            <td>{{ $invo->dari }}</td>
-                            <td>{{ $invo->catatan }}</td>
+                            <td><span>{{ $invo->tgl_invoice }}</span></td>
+                            <td>{{ $invo->invoice }}</td>
+                            <td>{{ $invo->detail }}</td>
+                            <td class="text-right">{{ number_format($invo->nominal, 0) }}</td>                     
                             <td>{{ $invo->status }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $invo->id }}"><i class="fa fa-edit"></i></button>
@@ -151,31 +150,28 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="tgl_transaksi">Tanggal Transaksi:</label>
-                                                <input type="date" id="tgl_transaksi" name="tgl_transaksi" class="form-control"  value="{{ $invo->Invoice }}" required>
+                                                <label for="tgl_invoice">Tanggal Invoice:</label>
+                                                <input type="date" id="tgl_invoice" name="tgl_invoice" class="form-control"  value="{{ $invo->tgl_invoice }}" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="transaksi">Transaksi:</label>
-                                                <input type="text" id="transaksi" name="transaksi" class="form-control"
-                                                value="{{ $invo->transaksi }}" required>
-                                            </div>
+                                                <label for="invoice">Invoice:</label>
+                                                <input type="text" id="invoice" name="invoice" class="form-control"
+                                                value="{{ $invo->invoice }}" required>
+                                            </div>          
+                                            <div class="form-group">
+                                                <label for="detail">Detail:</label>
+                                                <input type="text" id="detail" name="detail" class="form-control" 
+                                                value="{{ $invo->detail }}"required>
+                                            </div>                                  
                                             <div class="form-group">
                                                 <label for="nominal">Nominal:</label>
                                                 <input type="text" id="nominal" name="nominal" class="form-control" 
-                                                value="{{ number_format($cashin->nominal, 0) }}"required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dari">Dari:</label>
-                                                <input type="text" id="dari" name="dari" class="form-control" value="{{ $cashin->dari }}"required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="catatan">Catatan:</label>
-                                                <input type="text" id="catatan" name="catatan" class="form-control" value="{{ $cashin->catatan }}"required>
-                                            </div>
+                                                value="{{ number_format($invo->nominal, 0) }}"required>
+                                            </div>                                            
                                             <div class="form-group">
                                                 <label for="status">Status:</label>
                                                 <input type="text" id="status" name="status" class="form-control" 
-                                                value="{{ $cashin->status }}"required>
+                                                value="{{ $invo->status }}"required>
                                             </div>
                                         
                                             </div>
