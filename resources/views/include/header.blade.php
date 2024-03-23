@@ -86,7 +86,7 @@
                           </ul>
                       </li>
                       <li>
-                          <a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a>
+                          <a href="/" class="icon-menu"><i class="fa fa-power-off"></i></a>
                       </li>
                   </ul>
               </div>
