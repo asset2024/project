@@ -14,4 +14,12 @@ class LpgController extends Controller
             'title' => $title,
         ]);
     }
+    public function detail()
+    {
+        $title = 'LPG Detail';
+
+        return view('pages.admin.lpg-detail', [
+            'title' => $title,
+        ]);
+    }
 }

@@ -26,10 +26,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/', function () {
-//     return view('pages.admin.');
-// });
-Route::get('/', [DashboardController::class, 'enm']);
+Route::get('/', function () {
+    return view('pages/page-login');
+});
+Route::get('/dashboard', [DashboardController::class, 'enm']);
+// Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+// Route::post('/login', [AuthController::class, 'authenticating'])->middleware('guest');
+// Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
 Route::get('/dashboard-enm', [DashboardController::class, 'enm'])->name('dashboard-enm');
 Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashboard-muji');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
@@ -51,6 +55,7 @@ Route::get('/cng', [CngController::class, 'index'])->name('cng');
 Route::get('/pasirjadi', [PasirjadiController::class, 'index'])->name('pasirjadi');
 
 Route::get('/lpg', [LpgController::class, 'index'])->name('lpg');
+Route::get('/lpg-detail', [LpgController::class, 'detail'])->name('lpg-detail');
 
 
 Route::get('/cashin', [CashinController::class, 'index'])->name('cashin');
