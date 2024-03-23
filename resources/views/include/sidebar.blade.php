@@ -31,8 +31,14 @@
                <div class="tab-pane active" id="menu">
                    <nav id="left-sidebar-nav" class="sidebar-nav">
                        <ul id="main-menu" class="metismenu li_animation_delay">
-                           <li>
-                               <a href="/dashboard"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
+
+                           <li class="{{ Request::is('dashboard-enm','dashboard-muji') ? 'active' : '' }}">
+                               <a href="#App" class="has-arrow"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
+                               <ul>
+                                   <li class="{{ Request::is('dashboard-enm') ? 'active' : '' }}"><a href="/dashboard-enm">Dashboard ENM</a></li>
+                                   <li class="{{ Request::is('dashboard-muji') ? 'active' : '' }}"><a href="/dashboard-muji">Dashboard MUJI</a></li>
+
+                               </ul>
                            </li>
                            <li class="{{ Request::is('project','pekerjaan') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Proyek</span></a>
@@ -42,8 +48,17 @@
 
                                </ul>
                            </li>
+                           <li class="{{ Request::is('pltm','cng','pasirjadi','lpg') ? 'active' : '' }}">
+                               <a href="#App" class="has-arrow"><i class="fa fa-thumb-tack"></i><span>Reguler</span></a>
+                               <ul>
+                                   <li class="{{ Request::is('pltm') ? 'active' : '' }}"><a href="/pltm">PLTM Cirompang</a></li>
+                                   <li class="{{ Request::is('cng') ? 'active' : '' }}"><a href="/cng">CNG</a></li>
+                                   <li class="{{ Request::is('pasirjadi') ? 'active' : '' }}"><a href="/pasirjadi">Pasirjadi</a></li>
+                                   <li class="{{ Request::is('lpg') ? 'active' : '' }}"><a href="/lpg">LPG</a></li>
+                               </ul>
+                           </li>
                            <li class="{{ Request::is('cashin','cashout','invoice') ? 'active' : '' }}">
-                               <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Keuangan</span></a>
+                               <a href="#Widgets" class="has-arrow"><i class="fa fa-dollar"></i><span>Keuangan</span></a>
                                <ul>
                                    <li class="{{ Request::is('cashin') ? 'active' : '' }}"><a href="/cashin">Cash In</a></li>
                                    <li class="{{ Request::is('cashout') ? 'active' : '' }}"><a href="/cashout">Cash Out</a></li>
@@ -54,7 +69,7 @@
                            <hr>
 
                            <li class="{{ Request::is('client','users') ? 'active' : '' }}">
-                               <a href="#Widgets" class="has-arrow"><i class="fa fa-puzzle-piece"></i><span>Master</span></a>
+                               <a href="#Widgets" class="has-arrow"><i class="fa fa-cog"></i><span>Master</span></a>
                                <ul>
                                    <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="/client">Klien</a></li>
                                    <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="widgets-data.html">Users</a></li>
