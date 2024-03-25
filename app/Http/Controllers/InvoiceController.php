@@ -93,9 +93,37 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+        {
+            // $request->validate([
+            //     'project' => 'required',
+            //     'client_id' => 'required',
+            //     'nilai_kontrak' => 'required|numeric',
+            //     'tgl_kontrak' => 'required|date',
+            //     'no_kontrak' =>  'required|numeric',
+            //     'lama_pekerjaan' => 'required|numeric', 
+            //     'mulai_kontrak' => 'required|date',
+            //     'selesai_kontrak' => ' required|date',
+            //     'status' => 'required'
+            // ]);         
+            
+            $nominal = str_replace(',', '', $request->nominal);
+            $inv = Invoice::findOrFail($id);
+            $inv->pekerjaan_id = $request->pekerjaan_id;
+            $inv->tgl_invoice = $request->tgl_invoice;
+            $inv->invoice = $request->invoice;            
+            $inv->nominal=$nominal;            
+            $inv->detail = $request->detail;
+            $inv->status = '1';
+            $inv->save();
+        
+           
+            return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');
+            
+        } 
     }
 
     /**
@@ -104,5 +132,12 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+    }
+    public function nonaktif($id){
+        $i = Invoice::findorFail($id);
+
+        $i->status='2';
+        $i->save();
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
     }
 }

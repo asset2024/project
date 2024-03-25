@@ -155,7 +155,10 @@
                                 <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}-<br>
                                 {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
 
-                                <td>{{ $kerja->progres }}%</td>
+                                {{-- <td>{{ $kerja->progres }}%</td> --}}
+                                <td>
+                                <progress id="file" value="{{ $kerja->progres }}" max="100" style="font-size:7px" >
+                                </progress> </td>
                                 {{-- <td>{{ $kerja->status }}</td> --}}
                                 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">

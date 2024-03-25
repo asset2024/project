@@ -32,7 +32,7 @@
                    <nav id="left-sidebar-nav" class="sidebar-nav">
                        <ul id="main-menu" class="metismenu li_animation_delay">
                            <li>
-                               <a href="/dashboard"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
+                               <a href="{{ route('dashboard') }}"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
                            </li>
                            <li class="{{ Request::is('project','pekerjaan') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Proyek</span></a>

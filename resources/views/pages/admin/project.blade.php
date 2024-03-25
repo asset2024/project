@@ -34,6 +34,10 @@
                                     <input type="text" id="project" name="project" class="form-control" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="lokasi">Lokasi:</label>
+                                    <input type="text" id="lokasi" name="lokasi" class="form-control" required>
+                                </div>
+                                <div class="form-group">
                                     <label for="id">ID Klien:</label>
                                     <select id="id" name="id" class="form-control" required>
                                         <option value="" selected disabled>Select Klien</option>
@@ -101,7 +105,8 @@
                                     </label>
                                 </th>
                                 <th style="text-align: center;">Project</th>
-                                <th style="text-align: center;">Mitra</th>
+                                <th style="text-align: center;">Lokasi</th>
+                                <th style="text-align: center;">Customer</th>
                                 <th style="text-align: center;">Nilai Kontrak</th>
                                 <th style="text-align: center;">Waktu Kontrak</th>
                                 <th style="text-align: center;">Lama Pekerjaan</th>
@@ -124,6 +129,7 @@
                                     <span>marshall-n@gmail.com</span>
                                 </td> --}}
                                 <td><span><b>{{ $proj->project }}</b><br>{{ $proj->no_kontrak }}</span></td>
+                                <td><span><b>{{ $proj->lokasi }}</b>
                                 <td><span>{{ $proj->client['client'] }}</span></td>
                                 <td class="text-left">Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
                                 <td>{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} -<br> {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
@@ -134,7 +140,7 @@
 
 
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $proj->id }}"><i class="fa fa-edit"></i></button>
-                                    <a href="detail-project" class="btn btn-success"><i class="icon-eye"></i></a>
+                                    <a href="{{ route('detail_project', ['id' => $proj->id]) }}" class="btn btn-success"><i class="icon-eye"></i></a>
 
                                 </td>
                             </tr>
@@ -155,6 +161,10 @@
                                                 <div class="form-group">
                                                     <label for="project">Proyek:</label>
                                                     <input type="text" id="project" name="project" class="form-control" required value="{{ $proj->project }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="lokasi">Lokasi:</label>
+                                                    <input type="text" id="lokasi" name="lokasi" class="form-control" required value="{{ $proj->lokasi }}">
                                                 </div>
 
                                                 <div class="form-group">

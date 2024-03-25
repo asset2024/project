@@ -3,7 +3,7 @@
 <div class="block-header">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>{{$title}}</h2>
+            <h2>Detail Proyek</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
                 <li class="breadcrumb-item">Proyek</li>
@@ -28,21 +28,23 @@
     <div class="col-lg-3 col-md-12">
         <div class="card member-card">
             <div class="header primary-bg text-light mb-3">
-                <h4 class="mt-2 mb-0">Nama Proyek</h4>
+                @foreach ($project as $proj )                    
+                <h4 class="mt-2 mb-0">{{ $proj->project }}</h4>
                 <span>Nama Mitra</span>
             </div>
             <div class="member-img">
                 <a href="javascript:void(0);"><img src="../assets/images/project/avatar.jpg" class="rounded-circle" alt="profile-image"></a>
             </div>
             <div class="body">
-                <p class="text-muted mb-3">Lokasi Proyek<br> Provinsi / Negara</p>
+                <p class="text-muted mb-3">Lokasi Proyek<br> {{ $proj->lokasi }}</p>
 
                 <div class="row">
 
                     <div class="col-12">
-                        <h5 class="mb-1">Rp 100,656,000,000</h5>
+                        <h5 class="mb-1">{{ $proj->nilai_kontrak }}</h5>
                         <small>(Nilai Kontrak)</small>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -661,5 +663,5 @@
     </div>
 </div>
 
-
+@endforeach
 @endsection

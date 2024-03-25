@@ -32,14 +32,15 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('pages.admin.');
 // });
-Route::get('/', [DashboardController::class, 'enm']);
-Route::get('/dashboard-enm', [DashboardController::class, 'enm'])->name('dashboard-enm');
-Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashboard-muji');
+// Route::get('/dashboard', [DashboardController::class, 'enm']);
+Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard-enm', [DashboardController::class, 'enm'])->name('dashboard-enm');
+// Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashboard-muji');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
+Route::get('/detail-project/{id}', [ProjectController::class, 'show'])->name('detail-project');
 
-Route::get('/detail-project', [ProjectController::class, 'detail'])->name('detail-project');
-Route::get('/detail-project2', [ProjectController::class, 'detail2'])->name('detail-project2');
 
 
 Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
@@ -63,3 +64,6 @@ Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_
 Route::get('/client', [ClientController::class, 'index'])->name('client');
 
 Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');
+Route::put('/deletecashin/{id}', [CashinController::class, 'nonaktif'])->name('deletecashin');
+Route::put('/deletecashout/{id}', [CashoutController::class, 'nonaktif'])->name('deletecashout');
+Route::put('/deleteinvoice/{id}', [InvoiceController::class, 'nonaktif'])->name('deleteinvoice');
