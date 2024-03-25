@@ -3,11 +3,18 @@
 use App\Http\Controllers\CashinController;
 use App\Http\Controllers\CashoutController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CngController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\detailController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\LpgController;
+use App\Http\Controllers\PasirjadiController;
 use App\Http\Controllers\PekerjaanController;
+use App\Http\Controllers\PltmController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EnmController;
+
+use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +29,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('pages.admin.welcome');
-});
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+// Route::get('/', function () {
+//     return view('pages.admin.');
+// });
+Route::get('/', [DashboardController::class, 'enm']);
+Route::get('/dashboard-enm', [DashboardController::class, 'enm'])->name('dashboard-enm');
+Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashboard-muji');
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
 
@@ -38,6 +47,8 @@ Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan
 Route::post('/pekerjaan/store', [PekerjaanController::class, 'store'])->name('store_pekerjaan');
 Route::put('/pekerjaan/{id}', [PekerjaanController::class, 'update'])->name('update_pekerjaan');
 
+
+
 Route::get('/cashin', [CashinController::class, 'index'])->name('cashin');
 Route::post('/cashin/store', [CashinController::class, 'store'])->name('store_cashin');
 Route::put('/cashin/{id}', [CashinController::class, 'update'])->name('update_cashin');
@@ -47,4 +58,8 @@ Route::post('/cashout/store', [CashoutController::class, 'store'])->name('store_
 Route::put('/cashout/{id}', [CashoutController::class, 'update'])->name('update_cashout');
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
+Route::post('/invoice/store', [InvoiceController::class, 'store'])->name('store_invoice');
+Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');
+
+Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');
