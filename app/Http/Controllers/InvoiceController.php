@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Pekerjaan;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -13,10 +14,15 @@ class InvoiceController extends Controller
     public function index()
     {
         $title = 'Invoice';
-
+        $invoice = Invoice::with('Pekerjaan')->get();
+        $listPekerjaan = Pekerjaan::all();
+        
         // $invoice = Invoice::all();
         return view('pages.admin.invoice', [
             'title' => $title,
+            'invoice'=> $invoice,
+            'listPekerjaan' => $listPekerjaan
+            
             //  'listInvoice' => $invoice,
         ]);
     }
@@ -34,7 +40,38 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+        {
+            // $request->validate([
+            //     'project' => 'required',
+            //     'client_id' => 'required',
+            //     'nilai_kontrak' => 'required|numeric',
+            //     'tgl_kontrak' => 'required|date',
+            //     'no_kontrak' =>  'required|numeric',
+            //     'lama_pekerjaan' => 'required|numeric', 
+            //     'mulai_kontrak' => 'required|date',
+            //     'selesai_kontrak' => ' required|date',
+            //     'status' => 'required'
+            // ]);
+            
+            $Invoice = new Invoice();
+            $Invoice->pekerjaan_id = $request->pekerjaan_id;
+            $Invoice->tgl_invoice = $request->tgl_invoice;
+            $Invoice->invoice = $request->invoice;
+            $Invoice->detail = $request->detail;
+            $Invoice->nominal = $request->nominal;            
+            $Invoice->status = '1';
+            $Invoice->save();
+        
+           
+            if ($Invoice->save()) {
+                return redirect()->back()->with('success', 'Data Pekerjaan berhasil disimpan.');
+            } else {
+                return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
+            }
+            
+        } 
     }
 
     /**
@@ -56,9 +93,37 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request);
+        // dd($request->all());
+        {
+            // $request->validate([
+            //     'project' => 'required',
+            //     'client_id' => 'required',
+            //     'nilai_kontrak' => 'required|numeric',
+            //     'tgl_kontrak' => 'required|date',
+            //     'no_kontrak' =>  'required|numeric',
+            //     'lama_pekerjaan' => 'required|numeric', 
+            //     'mulai_kontrak' => 'required|date',
+            //     'selesai_kontrak' => ' required|date',
+            //     'status' => 'required'
+            // ]);         
+            
+            $nominal = str_replace(',', '', $request->nominal);
+            $inv = Invoice::findOrFail($id);
+            $inv->pekerjaan_id = $request->pekerjaan_id;
+            $inv->tgl_invoice = $request->tgl_invoice;
+            $inv->invoice = $request->invoice;            
+            $inv->nominal=$nominal;            
+            $inv->detail = $request->detail;
+            $inv->status = '1';
+            $inv->save();
+        
+           
+            return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');
+            
+        } 
     }
 
     /**
@@ -67,5 +132,12 @@ class InvoiceController extends Controller
     public function destroy(Invoice $invoice)
     {
         //
+    }
+    public function nonaktif($id){
+        $i = Invoice::findorFail($id);
+
+        $i->status='2';
+        $i->save();
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
     }
 }

@@ -59,10 +59,7 @@
                                 <label for="catatan">Catatan:</label>
                                 <input type="text" id="catatan" name="catatan" class="form-control" required>
                             </div>
-                            <div class="form-group">
-                                <label for="status">Status:</label>
-                                <input type="text" id="status" name="status" class="form-control" required>
-                            </div>
+                            
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -101,12 +98,13 @@
                                 <th>Nominal</th>
                                 <th>Dari</th>
                                 <th>Catatan</th>
-                                <th>Status</th>
+                                
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cashin as $cashin )
+                            @if ($cashin->status== 1)
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -125,12 +123,41 @@
                                 <td class="text-right">{{ number_format($cashin->nominal, 0) }}</td>
                                 <td>{{ $cashin->dari }}</td>
                                 <td>{{ $cashin->catatan }}</td>
-                                <td>{{ $cashin->status }}</td>
+                                
                                 <td>
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $cashin->id }}"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal{{ $cashin->id }}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="deleteModal{{ $cashin->id }}" tabindex="-1"         role="dialog" aria-labelledby="deleteModalLabel{{ $cashin->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ $cashin->id }}">Hapus Data Cash In</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('deletecashin', ['id' => $cashin->id]) }}">
+                                                @csrf
+                                                @method('PUT')                                                            
+                                                <div class="form-group">
+                                                    <h6 for="status">Apa anda yakin untuk menghapus data ?</h6>                                                                
+                                                </div>
+                                                <div class="form-group">                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" value="{{ $cashin->status }}" required>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                            <button type="submit" class="btn btn-primary">Ya</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
                             {{-- modal edit --}}
                             <div class="modal fade" id="editModal{{ $cashin->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $cashin->id }}" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -178,8 +205,8 @@
                                                     <input type="text" id="catatan" name="catatan" class="form-control" value="{{ $cashin->catatan }}"required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="status">Status:</label>
-                                                    <input type="text" id="status" name="status" class="form-control" 
+                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" 
                                                     value="{{ $cashin->status }}"required>
                                                 </div>
                                             
@@ -192,6 +219,7 @@
                                             </form>
                                         </div>
                                     </div>
+                                    @endif
                             @endforeach
                         </tbody>
                     </table>
