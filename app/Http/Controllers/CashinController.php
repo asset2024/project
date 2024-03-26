@@ -116,7 +116,7 @@ class CashinController extends Controller
         $cashins->nominal = $nominal;
         $cashins->dari = $request->dari;
         $cashins->catatan = $request->catatan;
-        $cashins->status = $request->status;
+        $cashins->status='1';
         $cashins->save();
         
         return redirect()->route('cashin')->with('success', 'Data proyek berhasil diperbarui.');
@@ -128,5 +128,18 @@ class CashinController extends Controller
     public function destroy(Cashin $cashin)
     {
         //
+    }
+    public function nonaktif($id)
+    {
+   // dd($id);
+        // Temukan pekerjaan berdasarkan ID
+        $c = Cashin::findOrFail($id);
+      //  dd($pekerjaan);
+        // Ubah status pekerjaan menjadi tidak aktif
+        $c->status = '2';
+        $c->save();
+
+        // Redirect atau response sesuai kebutuhan
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
     }
 }

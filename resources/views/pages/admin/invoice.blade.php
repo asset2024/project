@@ -20,51 +20,42 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="inputModalLabel">Form Input Data SPK</h5>
+                            <h5 class="modal-title" id="inputModalLabel">Form Input Data Invoicet</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="#" id="inputForm">
+                            <form method="POST" action="{{ route('store_invoice') }}" id="inputForm">
                                 @csrf
                                 
                                 <div class="form-group">
-                                    {{-- <label for="project_id">Project:</label>
-                                    <select id="project_id" name="project_id" class="form-control" required>
-                                        <option value="" selected disabled>Select Project</option>
-                                        @foreach($listProject as $project)
-                                            <option value="{{ $project->project_id }}">{{ $project->project }}</option>
+                                    <label for="id">Pekerjaan:</label>
+                                    <select id="pekerjaan_id" name="pekerjaan_id" class="form-control" required>
+                                        <option value="" selected disabled>Select pekerjaan</option>
+                                        @foreach($listPekerjaan as $pekerjaan)
+                                            <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
                                         @endforeach
-                                    </select> --}}
+                                    </select>
                                 <div class="form-group">
-                                        <label for="pekerjaan">Tanggal:</label>
-                                        <input type="date" id="pekerjaan" name="pekerjaan" class="form-control" required>
+                                        <label for="tgl_invoice">Tanggal Invoice:</label>
+                                        <input type="date" id="tgl_invoice" name="tgl_invoice" class="form-control" required>
                                 </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="no_spk">No SPK:</label>
-                                    <input type="text" id="no_spk" name="no_spk" class="form-control" required>
+                                    <label for="invoice">Invoice:</label>
+                                    <input type="text" id="invoice" name="invoice" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="tgl">Tanggal:</label>
-                                    <input type="date" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
+                                    <label for="detail">Detail:</label>
+                                    <input type="text" id="detail" name="detail" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="mulai_pekerjaan">Invoice:</label>
-                                    <input type="text" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="selesai_pekerjaan">Detail:</label>
-                                    <input type="text" id="selesai_pekerjaan" name="selesai_pekerjaan" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="selesai_kontrak">Nominal:</label>
-                                    <input type="text" id="progres" name="progres" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="status">Status:</label>
-                                    <input type="text" id="status" name="status" class="form-control" required>
+                                    <label for="nominal">nominal:</label>
+                                    <input type="text" id="nominal" name="nominal" class="form-control" required>
+                                </div>                                
+                                <div class="form-group">                                    
+                                    <input type="hidden" id="status" name="status" class="form-control" required>
                                 </div>
                             </form>
                         </div>
@@ -99,52 +90,142 @@
                                         <span></span>
                                     </label>
                                 </th>
-                                <th>Tgl</th>
-                                <th>No. SPK</th>
+                                <th>SPK</th>
+                                <th>Tanggal</th>
                                 <th>Invoice</th>
-                                <th>Detail</th>
+                                
                                 <th>Nominal</th>
-                                <th>Status</th>
+                                <th>Detail</th>
+                                
+                                
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($invoice as $invoice )
+                            @if($invoice->status=='1' )
+                                
+                            
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
                                         <input class="checkbox-tick" type="checkbox" name="checkbox">
                                         <span></span>
                                     </label>
-                                    
+                                    {{-- <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
                                 </td>
                                 <td>
-                                    <h6 class="mb-0">1 Februari 2023</h6>
-                                    
-                                </td>
-                                <td><span>SPK-01/III/2024</span></td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>100</span></td>
-                                <td>500.000</td>
-                                <td>Lunas</td>
-                               
-                            </tr>
-                            <tr>
-                                <td class="width45">
-                                    <label class="fancy-checkbox">
-                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                    
-                                </td>
+                                    <h6 class="mb-0">Marshall Nichols</h6>
+                                    <span>marshall-n@gmail.com</span>
+                                </td> --}}
+                                <td><span>{{ $invoice->pekerjaan['pekerjaan'] }}</span></td>
+                                <td><span>{{ $invoice->tgl_invoice }}</span></td>
+                                <td><span>{{ $invoice->invoice }}</span></td>
+                                {{-- <td>{{ $invoice->pekerjaan['no_spk'] }}</td> --}}
+                                <td class="text-right">{{ number_format($invoice->nominal, 0) }}</td>
+                                <td>{{ $invoice->detail }}</td>
+                                
+                                
+                                
+                                
                                 <td>
-                                    <h6 class="mb-0">1 Februari 2023</h6>
-                                    
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $invoice->id }}"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal{{ $invoice->id }}"><i class="fa fa-trash"></i></button>
                                 </td>
-                                <td><span>SPK-01/III/2024</span></td>
-                                <td><span>LA-0215</span></td>
-                                <td><span>100</span></td>
-                                <td>500.000</td>
-                                <td>Lunas</td>
+                                
                             </tr>
+                            <div class="modal fade" id="deleteModal{{ $invoice->id }}" tabindex="-1"         role="dialog" aria-labelledby="deleteModalLabel{{ $invoice->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ $invoice->id }}">Hapus Data Invoice</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('deleteinvoice', ['id' => $invoice->id]) }}">
+                                                @csrf
+                                                @method('PUT')                                                            
+                                                <div class="form-group">
+                                                    <h6 for="status">Apa anda yakin untuk menghapus data ?</h6>                                                                
+                                                </div>
+                                                <div class="form-group">                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" value="{{ $invoice->status }}" required>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                            <button type="submit" class="btn btn-primary">Ya</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {{-- modal edit --}}
+                            <div class="modal fade" id="editModal{{ $invoice->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $invoice->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel{{ $invoice->id }}">Form Edit Data Cash In</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('update_invoice', ['id' => $invoice->id]) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="id">Pekerjaan:</label>
+                                                    <select id="pekerjaan_id" name="pekerjaan_id" class="form-control">
+                                                        @foreach ($listPekerjaan as $kerja)
+                                                            <option value="{{ $kerja->id }}" {{ $invoice->pekerjaan_id == $kerja->id ? 'selected' : '' }}>
+                                                                {{ $kerja->pekerjaan }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tgl_invoice">Tanggal Invoice:</label>
+                                                    <input type="date" id="tgl_invoice" name="tgl_invoice" class="form-control"  value="{{ $invoice->tgl_invoice }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="invoice">Invoice:</label>
+                                                    <input type="text" id="invoice" name="invoice" class="form-control"
+                                                    value="{{ $invoice->invoice }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nominal">Nominal:</label>
+                                                    <input type="text" id="nominal" name="nominal" class="form-control" 
+                                                    value="{{ number_format($invoice->nominal, 0) }}"required>
+                                                </div>
+                                                {{-- <div class="form-group">
+                                                    <label for="no_spk">No SPK:</label>
+                                                    <input type="no_spk" id="no_spk" name="no_spk" class="form-control" value="{{ $pekerjaan->no_spk }}"required>
+                                                </div> --}}
+                                                <div class="form-group">
+                                                    <label for="detail">Detail:</label>
+                                                    <input type="text" id="detail" name="detail" class="form-control" value="{{ $invoice->detail }}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" 
+                                                    value="{{ $invoice->status }}"required>
+                                                </div>
+                                            
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endif
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

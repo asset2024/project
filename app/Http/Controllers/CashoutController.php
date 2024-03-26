@@ -116,7 +116,7 @@ class CashoutController extends Controller
         $cashout->nominal = $nominal;
         $cashout->tujuan = $request->tujuan;
         $cashout->catatan = $request->catatan;
-        $cashout->status = $request->status;
+        $cashout->status= '1';
         $cashout->save();
         
         return redirect()->route('cashout')->with('success', 'Data proyek berhasil diperbarui.');
@@ -128,5 +128,18 @@ class CashoutController extends Controller
     public function destroy(Cashout $cashout)
     {
         //
+    }
+    public function nonaktif($id)
+    {
+   // dd($id);
+        // Temukan pekerjaan berdasarkan ID
+        $co = Cashout::findOrFail($id);
+      //  dd($pekerjaan);
+        // Ubah status pekerjaan menjadi tidak aktif
+        $co->status = '2';
+        $co->save();
+
+        // Redirect atau response sesuai kebutuhan
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
     }
 }
