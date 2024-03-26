@@ -137,11 +137,8 @@
                                 <td>{{ $proj->status }}</td>
 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
-
-
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $proj->id }}"><i class="fa fa-edit"></i></button>
                                     <a href="{{ route('detail_project', ['id' => $proj->id]) }}" class="btn btn-success"><i class="icon-eye"></i></a>
-
                                 </td>
                             </tr>
                             <!-- modal edit -->
