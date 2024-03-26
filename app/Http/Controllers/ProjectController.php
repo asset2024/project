@@ -73,6 +73,8 @@ class ProjectController extends Controller
             $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
             $project = new Project();
             $project->project = $request->project;
+            $project->lokasi = $request->lokasi;
+
             $project->client_id = $request->id;
             $project->nilai_kontrak = $nilai_kontrak;
 
@@ -94,8 +96,10 @@ class ProjectController extends Controller
     }
 
 
-    public function show(Project $project)
-    {
+    public function show($id) {
+        
+        $project = Project::with('client')->get();      
+        return view('pages.admin.detail-project', compact('project'));
     }
 
 
@@ -125,7 +129,8 @@ class ProjectController extends Controller
         $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
         $project = Project::findOrFail($id);
         $project->project = $request->project;
-        $project->client_id = $request->id;
+        $project->lokasi = $request->lokasi;
+        $project->client_id = $request->id_client;
         $project->nilai_kontrak = $nilai_kontrak;
         $project->tgl_kontrak = $request->tgl_kontrak;
         $project->no_kontrak = $request->no_kontrak;

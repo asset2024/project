@@ -32,6 +32,7 @@
                    <nav id="left-sidebar-nav" class="sidebar-nav">
                        <ul id="main-menu" class="metismenu li_animation_delay">
 
+
                            <li class="{{ Request::is('dashboard-enm','dashboard-muji') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-area-chart"></i><span>Dashboard</span></a>
                                <ul>
@@ -39,6 +40,7 @@
                                    <li class="{{ Request::is('dashboard-muji') ? 'active' : '' }}"><a href="/dashboard-muji">Dashboard MUJI</a></li>
 
                                </ul>
+
                            </li>
                            <li class="{{ Request::is('project','pekerjaan') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Proyek</span></a>

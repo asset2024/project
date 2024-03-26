@@ -12,6 +12,11 @@ use App\Http\Controllers\PasirjadiController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PltmController;
 use App\Http\Controllers\ProjectController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\EnmController;
+
+>>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
@@ -27,18 +32,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/', function () {
-//     return view('pages.admin.');
-// });
-Route::get('/', [DashboardController::class, 'enm']);
+
+Route::get('/', function () {
+    return view('pages/page-login');
+});
+Route::get('/dashboard', [DashboardController::class, 'enm']);
+// Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+// Route::post('/login', [AuthController::class, 'authenticating'])->middleware('guest');
+// Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+
 Route::get('/dashboard-enm', [DashboardController::class, 'enm'])->name('dashboard-enm');
 Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashboard-muji');
+
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
-
-Route::get('/detail-project', [ProjectController::class, 'detail'])->name('detail-project');
-Route::get('/detail-project2', [ProjectController::class, 'detail2'])->name('detail-project2');
-
+Route::get('/detail-project/{id}', [ProjectController::class, 'show'])->name('detail-project');
 
 Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
 Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
@@ -52,6 +60,8 @@ Route::get('/cng', [CngController::class, 'index'])->name('cng');
 Route::get('/pasirjadi', [PasirjadiController::class, 'index'])->name('pasirjadi');
 
 Route::get('/lpg', [LpgController::class, 'index'])->name('lpg');
+Route::get('/lpg-detail', [LpgController::class, 'detail'])->name('lpg-detail');
+
 
 
 Route::get('/cashin', [CashinController::class, 'index'])->name('cashin');
@@ -68,3 +78,9 @@ Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_
 Route::get('/client', [ClientController::class, 'index'])->name('client');
 
 Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');
+<<<<<<< HEAD
+=======
+Route::put('/deletecashin/{id}', [CashinController::class, 'nonaktif'])->name('deletecashin');
+Route::put('/deletecashout/{id}', [CashoutController::class, 'nonaktif'])->name('deletecashout');
+Route::put('/deleteinvoice/{id}', [InvoiceController::class, 'nonaktif'])->name('deleteinvoice');
+>>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf

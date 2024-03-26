@@ -27,6 +27,7 @@
                         </div>
                         <div class="modal-body">
                             <form method="POST" action="{{ route('store_invoice') }}" id="inputForm">
+                            <form method="POST" action="{{ route('store_invoice') }}" id="inputForm">
                                 @csrf
                                 
                                 <div class="form-group">
@@ -35,9 +36,17 @@
                                         <option value="" selected disabled>Select pekerjaan</option>
                                         @foreach($listPekerjaan as $pekerjaan)
                                             <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
+                                    <label for="id">Pekerjaan:</label>
+                                    <select id="pekerjaan_id" name="pekerjaan_id" class="form-control" required>
+                                        <option value="" selected disabled>Select pekerjaan</option>
+                                        @foreach($listPekerjaan as $pekerjaan)
+                                            <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
                                         @endforeach
                                     </select>
+                                    </select>
                                 <div class="form-group">
+                                        <label for="tgl_invoice">Tanggal Invoice:</label>
+                                        <input type="date" id="tgl_invoice" name="tgl_invoice" class="form-control" required>
                                         <label for="tgl_invoice">Tanggal Invoice:</label>
                                         <input type="date" id="tgl_invoice" name="tgl_invoice" class="form-control" required>
                                 </div>
@@ -45,8 +54,12 @@
                                 <div class="form-group">
                                     <label for="invoice">Invoice:</label>
                                     <input type="text" id="invoice" name="invoice" class="form-control" required>
+                                    <label for="invoice">Invoice:</label>
+                                    <input type="text" id="invoice" name="invoice" class="form-control" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="detail">Detail:</label>
+                                    <input type="text" id="detail" name="detail" class="form-control" required>
                                     <label for="detail">Detail:</label>
                                     <input type="text" id="detail" name="detail" class="form-control" required>
                                 </div>
@@ -95,7 +108,7 @@
                                 <th>Tgl</th>
                                 <th>No. SPK</th>
                                 <th>Invoice</th>
-                                <th>Detail</th>
+                                
                                 <th>Nominal</th>
                                 <th>Status</th>
                             </tr>
