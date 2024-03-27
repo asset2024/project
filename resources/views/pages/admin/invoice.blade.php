@@ -55,7 +55,7 @@
                                     <input type="text" id="nominal" name="nominal" class="form-control" required>
                                 </div>                                
                                 <div class="form-group">                                    
-                                    <input type="hidden" id="status" name="status" class="form-control" required>
+                                    <input type="hidden"  name="status" class="form-control" required>
                                 </div>
                             </form>
                         </div>
