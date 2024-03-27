@@ -105,8 +105,9 @@ class ProjectController extends Controller
         $no_kontrak = Project::find($id)->no_kontrak;
         $mulai_kontrak = Project::find($id)->mulai_kontrak;
         $selesai_kontrak = Project::find($id)->selesai_kontrak;
+        $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
 
-        return view('pages.admin.detail-project', compact('project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
+        return view('pages.admin.detail-project', compact('lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
     }
 
 

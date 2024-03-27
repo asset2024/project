@@ -60,7 +60,7 @@
                         <p>{{ \Carbon\Carbon::parse($mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($selesai_kontrak)->format('d-m-Y') }}</p>
                         <hr>
                         <small class="text-muted">Lama Pekerjaan </small>
-                        <p> Hari</p>
+                        <p> {{ $lama_pekerjaan }}</p>
                         <hr>
                         <small class="text-muted">Cash In </small>
                         <p>677.000.000</p>
