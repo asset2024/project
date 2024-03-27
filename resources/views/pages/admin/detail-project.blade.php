@@ -63,7 +63,7 @@
                         <p> {{ $lama_pekerjaan }}</p>
                         <hr>
                         <small class="text-muted">Cash In </small>
-                        <p>677.000.000</p>
+                        <p>{{ $totalcashin }}</p>
                         <hr>
                         <small class="text-muted">Termin Invoice </small>
                         <p>4 Termin</p>

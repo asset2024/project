@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Client;
+use App\Models\Cashin;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -106,8 +107,12 @@ class ProjectController extends Controller
         $mulai_kontrak = Project::find($id)->mulai_kontrak;
         $selesai_kontrak = Project::find($id)->selesai_kontrak;
         $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
+        $totalcashin = CashIn::where('pekerjaan_id', $id)
+                      ->where('status', 1)
+                      ->sum('nominal');
 
-        return view('pages.admin.detail-project', compact('lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
+
+        return view('pages.admin.detail-project', compact('totalcashin','lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
     }
 
 
