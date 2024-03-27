@@ -26,6 +26,31 @@
             });
         });
         </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var deleteForm = document.getElementById('deleteForm');
+            var deleteButton = document.getElementById('deleteButton');
+        
+            deleteButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default button behavior
+                
+                // Show confirmation dialog with SweetAlert
+                swal({
+                    title: "Are you sure?",
+                    text: "This action will change the data!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // If confirmed, submit the form
+                        deleteForm.submit();
+                    }
+                });
+            });
+        });
+        </script>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <h2>{{$title}}</h2>
@@ -132,6 +157,7 @@
                         <tbody>
                             @foreach ($listPekerjaan as $kerja)
                             @if ($kerja->status== 1)
+                            @if ($kerja->status== 1)
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -144,6 +170,9 @@
                                     <h6 class="mb-0">Marshall Nichols</h6>
                                     <span>marshall-n@gmail.com</span>
                                 </td> --}}
+                                
+                                    
+                                
                                 
                                     
                                 

@@ -127,4 +127,11 @@ class InvoiceController extends Controller
     {
         //
     }
+    public function nonaktif($id){
+        $i = Invoice::findorFail($id);
+
+        $i->status='2';
+        $i->save();
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
+    }
 }
