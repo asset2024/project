@@ -26,6 +26,31 @@
             });
         });
         </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var deleteForm = document.getElementById('deleteForm');
+            var deleteButton = document.getElementById('deleteButton');
+        
+            deleteButton.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent default button behavior
+                
+                // Show confirmation dialog with SweetAlert
+                swal({
+                    title: "Are you sure?",
+                    text: "This action will change the data!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        // If confirmed, submit the form
+                        deleteForm.submit();
+                    }
+                });
+            });
+        });
+        </script>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <h2>{{$title}}</h2>
@@ -132,6 +157,7 @@
                         <tbody>
                             @foreach ($listPekerjaan as $kerja)
                             @if ($kerja->status== 1)
+                            @if ($kerja->status== 1)
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -147,6 +173,9 @@
                                 
                                     
                                 
+                                
+                                    
+                                
                                 <td><span>{{ $kerja->project['project'] }}</span></td>
                                 <td><span>{{ $kerja->pekerjaan }}</span></td>
                                 <td>{{ $kerja->no_spk }}</td>
@@ -155,10 +184,14 @@
                                 <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}-<br>
                                 {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
 
+<<<<<<< HEAD
+                                <td>{{ $kerja->progres }}%</td>
+=======
                                 {{-- <td>{{ $kerja->progres }}%</td> --}}
                                 <td>
                                 <progress id="file" value="{{ $kerja->progres }}" max="100" style="font-size:7px" >
                                 </progress> </td>
+>>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
                                 {{-- <td>{{ $kerja->status }}</td> --}}
                                 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
@@ -166,7 +199,11 @@
                                         <!-- Button Edit -->                                       
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $kerja->id }}"><i class="fa fa-edit"></i></button>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal{{ $kerja->id }}"><i class="fa fa-trash"></i></button>
+<<<<<<< HEAD
+                                </td>
+=======
                                         </td>
+>>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
                                         <!-- Button Delete -->                                                                             
                                         
                                         {{-- <form id="deleteForm" action="{{ route('deletekerja', $kerja->id) }}" method="POST">

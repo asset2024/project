@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
-use App\Models\Pekerjaan;
+use App\Models\Pekerjaan;   
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -14,15 +14,14 @@ class InvoiceController extends Controller
     public function index()
     {
         $title = 'Invoice';
-        $invoice = Invoice::with('Pekerjaan')->get();
+        $invoice = Invoice::with('pekerjaan')->get();
         $listPekerjaan = Pekerjaan::all();
-        
+
         // $invoice = Invoice::all();
         return view('pages.admin.invoice', [
             'title' => $title,
             'invoice'=> $invoice,
-            'listPekerjaan' => $listPekerjaan
-            
+            'listPekerjaan'=> $listPekerjaan
             //  'listInvoice' => $invoice,
         ]);
     }
@@ -41,7 +40,7 @@ class InvoiceController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        // dd($request->all());
+        var_dump($request->all());
         {
             // $request->validate([
             //     'project' => 'required',
@@ -55,17 +54,17 @@ class InvoiceController extends Controller
             //     'status' => 'required'
             // ]);
             
-            $Invoice = new Invoice();
-            $Invoice->pekerjaan_id = $request->pekerjaan_id;
-            $Invoice->tgl_invoice = $request->tgl_invoice;
-            $Invoice->invoice = $request->invoice;
-            $Invoice->detail = $request->detail;
-            $Invoice->nominal = $request->nominal;            
-            $Invoice->status = '1';
-            $Invoice->save();
+            $inv = new Invoice();
+            $inv->pekerjaan_id = $request->pekerjaan_id;
+            $inv->tgl_invoice = $request->tgl_invoice;
+            $inv->invoice = $request->invoice;
+            $inv->detail = $request->detail;
+            $inv->nominal = $request->nominal;
+            $inv->status = '1';
+            $inv->save();
         
            
-            if ($Invoice->save()) {
+            if ($inv->save()) {
                 return redirect()->back()->with('success', 'Data Pekerjaan berhasil disimpan.');
             } else {
                 return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
@@ -95,35 +94,30 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-        // dd($request->all());
-        {
-            // $request->validate([
-            //     'project' => 'required',
-            //     'client_id' => 'required',
-            //     'nilai_kontrak' => 'required|numeric',
-            //     'tgl_kontrak' => 'required|date',
-            //     'no_kontrak' =>  'required|numeric',
-            //     'lama_pekerjaan' => 'required|numeric', 
-            //     'mulai_kontrak' => 'required|date',
-            //     'selesai_kontrak' => ' required|date',
-            //     'status' => 'required'
-            // ]);         
-            
-            $nominal = str_replace(',', '', $request->nominal);
-            $inv = Invoice::findOrFail($id);
-            $inv->pekerjaan_id = $request->pekerjaan_id;
-            $inv->tgl_invoice = $request->tgl_invoice;
-            $inv->invoice = $request->invoice;            
-            $inv->nominal=$nominal;            
-            $inv->detail = $request->detail;
-            $inv->status = '1';
-            $inv->save();
         
-           
-            return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');
-            
-        } 
+        // $request->validate([
+
+        //     'project' => 'required',
+        //     'id' => 'required',
+        //     'nilai_kontrak' => 'required|numeric',
+        //     'tgl_kontrak' => 'required|date',
+        //     'no_kontrak' => 'required',
+        //     'mulai_kontrak' => 'required|date',
+        //     'selesai_kontrak' => 'required|date',
+        //     'status' => 'required',
+        // ]);
+        
+        $nominal = str_replace(',', '', $request->nominal);
+        $invoices = Invoice::findOrFail($id);
+        $invoices->pekerjaan_id = $request->id;
+        $invoices->tgl_invoice = $request->tgl_invoice;
+        $invoices->invoice = $request->invoice;
+        $invoices->detail = $request->detail;
+        $invoices->nominal = $nominal;
+        $invoices->status = $request->status;
+        $invoices->save();
+        
+        return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
     /**

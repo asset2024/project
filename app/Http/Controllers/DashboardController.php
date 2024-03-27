@@ -9,16 +9,25 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function enm()
     {
 
-        $title = 'Dashboard';
+        $title = 'Dashboard PT ENM';
 
-        return view('pages.admin.dashboard', [
+        return view('pages.admin.dashboard-enm', [
             'title' => $title,
         ]);
     }
 
+    public function muji()
+    {
+
+        $title = 'Dashboard PT MUJI';
+
+        return view('pages.admin.dashboard-muji', [
+            'title' => $title,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      */
