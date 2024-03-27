@@ -66,11 +66,11 @@
                                 <div class="form-group">
                                     <label for="nominal">Nominal:</label>
                                     <input type="text" id="nominal" name="nominal" class="form-control" required>
+                            
+                                <div class="form-group">                                    
+                                    <input type="hidden"  name="status" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label for="status">Status:</label>
-                                    <input type="text" id="status" name="status" class="form-control" required>
-                                </div>
+   
                             </form>
                         </div>
                         <div class="modal-footer">
