@@ -157,7 +157,7 @@
                         <tbody>
                             @foreach ($listPekerjaan as $kerja)
                             @if ($kerja->status== 1)
-                            @if ($kerja->status== 1)
+                            
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -184,14 +184,7 @@
                                 <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}-<br>
                                 {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
 
-<<<<<<< HEAD
                                 <td>{{ $kerja->progres }}%</td>
-=======
-                                {{-- <td>{{ $kerja->progres }}%</td> --}}
-                                <td>
-                                <progress id="file" value="{{ $kerja->progres }}" max="100" style="font-size:7px" >
-                                </progress> </td>
->>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
                                 {{-- <td>{{ $kerja->status }}</td> --}}
                                 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
@@ -199,11 +192,7 @@
                                         <!-- Button Edit -->                                       
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $kerja->id }}"><i class="fa fa-edit"></i></button>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal{{ $kerja->id }}"><i class="fa fa-trash"></i></button>
-<<<<<<< HEAD
                                 </td>
-=======
-                                        </td>
->>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
                                         <!-- Button Delete -->                                                                             
                                         
                                         {{-- <form id="deleteForm" action="{{ route('deletekerja', $kerja->id) }}" method="POST">
