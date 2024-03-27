@@ -39,7 +39,7 @@
                                     <label for="id">Pekerjaan:</label>
                                     <select id="pekerjaan_id" name="pekerjaan_id" class="form-control" required>
                                         <option value="" selected disabled>Select pekerjaan</option>
-                                        @foreach($listPekerjaan as $pekerjaan)
+                                        
                                             <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
                                         @endforeach
                                     </select>
@@ -203,7 +203,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 @endsection

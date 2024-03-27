@@ -12,11 +12,8 @@ use App\Http\Controllers\PasirjadiController;
 use App\Http\Controllers\PekerjaanController;
 use App\Http\Controllers\PltmController;
 use App\Http\Controllers\ProjectController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\EnmController;
 
->>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
 use App\Models\Invoice;
 use Illuminate\Support\Facades\Route;
 
@@ -93,9 +90,6 @@ Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_
 Route::get('/client', [ClientController::class, 'index'])->name('client');
 
 Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');
-<<<<<<< HEAD
-=======
 Route::put('/deletecashin/{id}', [CashinController::class, 'nonaktif'])->name('deletecashin');
 Route::put('/deletecashout/{id}', [CashoutController::class, 'nonaktif'])->name('deletecashout');
 Route::put('/deleteinvoice/{id}', [InvoiceController::class, 'nonaktif'])->name('deleteinvoice');
->>>>>>> e1aa75b8667679903afbd864f43f76d9d95fa6bf
