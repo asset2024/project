@@ -98,8 +98,16 @@ class ProjectController extends Controller
 
     public function show($id) {
         
-        $project = Project::with('client')->get();      
-        return view('pages.admin.detail-project', compact('project'));
+        $project = Project::with('client')->get();   
+        $proj = Project::find($id)->project;   
+        $lokasi = Project::find($id)->lokasi;
+        $nilai_kontrak = Project::find($id)->nilai_kontrak;
+        $no_kontrak = Project::find($id)->no_kontrak;
+        $mulai_kontrak = Project::find($id)->mulai_kontrak;
+        $selesai_kontrak = Project::find($id)->selesai_kontrak;
+        $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
+
+        return view('pages.admin.detail-project', compact('lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
     }
 
 
