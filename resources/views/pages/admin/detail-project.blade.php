@@ -28,20 +28,20 @@
     <div class="col-lg-3 col-md-12">
         <div class="card member-card">
             <div class="header primary-bg text-light mb-3">
-                @foreach ($project as $proj )                    
-                <h4 class="mt-2 mb-0">{{ $proj->project }}</h4>
+                                  
+                <h4 class="mt-2 mb-0">{{ $proj }}</h4>
                 <span>Nama Mitra</span>
             </div>
             <div class="member-img">
                 <a href="javascript:void(0);"><img src="../assets/images/project/avatar.jpg" class="rounded-circle" alt="profile-image"></a>
             </div>
             <div class="body">
-                <p class="text-muted mb-3">Lokasi Proyek<br> {{ $proj->lokasi }}</p>
+                <p class="text-muted mb-3">Lokasi Proyek<br> {{ $lokasi }}</p>
 
                 <div class="row">
 
                     <div class="col-12">
-                        <h5 class="mb-1">{{ $proj->nilai_kontrak }}</h5>
+                        <h5 class="mb-1">Rp {{number_format ($nilai_kontrak,0) }}</h5>
                         <small>(Nilai Kontrak)</small>
                     </div>
                     
@@ -54,13 +54,13 @@
                 <div class="tab-content pl-0 pr-0 pb-0">
                     <div class="tab-pane active" id="about">
                         <small class="text-muted">No. Kontrak: </small>
-                        <p>SP-01/PRTMN/III/2023</p>
+                        <p>{{ $no_kontrak }}</p>
                         <hr>
                         <small class="text-muted">Waktu Kontrak: </small>
-                        <p>31-03-2023 - 31-03-2024</p>
+                        <p>{{ \Carbon\Carbon::parse($mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($selesai_kontrak)->format('d-m-Y') }}</p>
                         <hr>
                         <small class="text-muted">Lama Pekerjaan </small>
-                        <p>60 Hari</p>
+                        <p> {{ $lama_pekerjaan }}</p>
                         <hr>
                         <small class="text-muted">Cash In </small>
                         <p>677.000.000</p>
@@ -172,12 +172,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><strong>Pemasangan Pipa</strong><br>
-                                            123456
+                                    <tr>@foreach ($project as $proj)
+                                        
+                                    
+                                        <td><strong>{{ $proj->project }}</strong><br>
+                                            {{ $proj->no_kontrak }}
                                         </td>
-                                        <td>32.000.000</td>
-                                        <td style="text-align: center;">25/04/2011 - <br>25/04/2011</td>
+                                        <td>Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
+                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
                                         <td style="text-align: center;"><span class="badge badge-success">50%</span></td>
                                         <td style="text-align: center;">10.000.000<br>1 Termin</td>
                                         <td style="text-align: center;">On Going</td>
@@ -186,6 +188,7 @@
                                             <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     <!-- modal edit -->
                                     <div class="modal fade" id="editModalSpk" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{-- $proj->id --}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -664,5 +667,6 @@
     </div>
 </div>
 
-@endforeach
+
+
 @endsection
