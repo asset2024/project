@@ -28,15 +28,17 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function detail()
+    public function detail($id)
     {
         $title = 'Detail Proyek';
-
-        return view('pages.admin.detail-project', [
+        $project = Project::with('client')->findOrFail($id);
+        $data = [
+            'listProject' => $project,
             'title' => $title,
-
-        ]);
+        ];
+        return view('pages.admin.detail-project', $data);
     }
+
 
     public function detail2()
     {

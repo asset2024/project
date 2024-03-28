@@ -88,12 +88,7 @@
                     <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
                         <thead class="thead-dark">
                             <tr>
-                                <th>
-                                    <label class="fancy-checkbox">
-                                        <input class="select-all" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                </th>
+                                <th>No</th>
                                 <th>Proyek</th>
                                 <th>Pekerjaan</th>
                                 <th>No. SPK</th>
@@ -101,7 +96,6 @@
                                 <th>Waktu Pekerjaan</th>
                                 <th>Progres</th>
                                 <th>Status</th>
-
                                 <th class="action-col" style="position: sticky; right: 0; z-index: 1; text-align: center;">Aksi</th>
 
                             </tr>
@@ -109,24 +103,15 @@
                         <tbody>
                             @foreach ($listPekerjaan as $kerja)
                             <tr>
-                                <td class="width45">
-                                    <label class="fancy-checkbox">
-                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                    {{-- <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0">Marshall Nichols</h6>
-                                    <span>marshall-n@gmail.com</span>
-                                </td> --}}
+                                <td class="width45">{{$loop->iteration}}</td>
                                 <td><span>{{ $kerja->project['project'] }}</span></td>
                                 <td><span>{{ $kerja->pekerjaan }}</span></td>
                                 <td>{{ $kerja->no_spk }}</td>
                                 <td class="text-right">{{ number_format($kerja->nilai_pekerjaan, 0) }}</td>
 
                                 <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}-<br>
-                                {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
+                                    {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}
+                                </td>
 
                                 <td>{{ $kerja->progres }}</td>
                                 <td>{{ $kerja->status }}</td>
@@ -168,8 +153,7 @@
                                                 <div class="form-group">
 
                                                     <label for="no_spk">No. SPK:</label>
-                                                    <input type="text" id="no_spk" name="no_spk" class="form-control"
-                                                    value="{{ $kerja->no_spk }}" required>
+                                                    <input type="text" id="no_spk" name="no_spk" class="form-control" value="{{ $kerja->no_spk }}" required>
 
 
                                                 </div>

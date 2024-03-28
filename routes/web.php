@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CngController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\detailController;
+use App\Http\Controllers\HargaController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LpgController;
 use App\Http\Controllers\PasirjadiController;
@@ -39,8 +40,8 @@ Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashb
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
 
-Route::get('/detail-project', [ProjectController::class, 'detail'])->name('detail-project');
-Route::get('/detail-project2', [ProjectController::class, 'detail2'])->name('detail-project2');
+Route::get('/detail-project/{id}', [ProjectController::class, 'detail'])->name('detail-project');
+
 
 
 Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
@@ -68,3 +69,5 @@ Route::put('/cashout/{id}', [CashoutController::class, 'update'])->name('update_
 
 Route::get('/invoice', [InvoiceController::class, 'index'])->name('invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');
+
+Route::get('/harga', [HargaController::class, 'index'])->name('harga');

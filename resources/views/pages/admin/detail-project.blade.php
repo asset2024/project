@@ -28,9 +28,12 @@
     <div class="col-lg-3 col-md-12">
         <div class="card member-card">
             <div class="header primary-bg text-light mb-3">
-                <h4 class="mt-2 mb-0">Nama Proyek</h4>
-                <span>Nama Mitra</span>
+                <h5 class="mt-2 mb-0">{{$listProject->project}}</h5>
+                <span>{{$listProject->client['client']}}</span>
+                <br>
+                <br>
             </div>
+
             <div class="member-img">
                 <a href="javascript:void(0);"><img src="../assets/images/project/avatar.jpg" class="rounded-circle" alt="profile-image"></a>
             </div>

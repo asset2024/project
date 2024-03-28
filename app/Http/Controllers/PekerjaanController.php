@@ -21,8 +21,8 @@ class PekerjaanController extends Controller
         return view('pages.admin.Pekerjaan', [
             'title' => $title,
             'listPekerjaan' => $Pekerjaan,
-            'listProject'=>$listProject
-            
+            'listProject' => $listProject
+
         ]);
     }
 
@@ -40,8 +40,7 @@ class PekerjaanController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        var_dump($request->all());
-        {
+        var_dump($request->all()); {
             // $request->validate([
             //     'project' => 'required',
             //     'client_id' => 'required',
@@ -53,26 +52,25 @@ class PekerjaanController extends Controller
             //     'selesai_kontrak' => ' required|date',
             //     'status' => 'required'
             // ]);
-            
+
             $Pekerjaan = new Pekerjaan();
             $Pekerjaan->project_id = $request->project_id;
             $Pekerjaan->pekerjaan = $request->pekerjaan;
             $Pekerjaan->no_spk = $request->no_spk;
             $Pekerjaan->nilai_pekerjaan = $request->nilai_pekerjaan;
-            $Pekerjaan->mulai_pekerjaan= $request->mulai_pekerjaan;
+            $Pekerjaan->mulai_pekerjaan = $request->mulai_pekerjaan;
             $Pekerjaan->selesai_pekerjaan = $request->selesai_pekerjaan;
             $Pekerjaan->progres = $request->progres;
             $Pekerjaan->status = '1';
             $Pekerjaan->save();
-        
-           
+
+
             if ($Pekerjaan->save()) {
                 return redirect()->back()->with('success', 'Data Pekerjaan berhasil disimpan.');
             } else {
                 return redirect()->back()->with('error', 'Gagal menyimpan data Project.');
             }
-            
-        } 
+        }
     }
     /**
      * Display the specified resource.
@@ -85,7 +83,8 @@ class PekerjaanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         //
     }
 
@@ -94,18 +93,8 @@ class PekerjaanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        // $request->validate([
 
-        //     'project' => 'required',
-        //     'id' => 'required',
-        //     'nilai_kontrak' => 'required|numeric',
-        //     'tgl_kontrak' => 'required|date',
-        //     'no_kontrak' => 'required',
-        //     'mulai_kontrak' => 'required|date',
-        //     'selesai_kontrak' => 'required|date',
-        //     'status' => 'required',
-        // ]);
+
         $nilai_pekerjaan = str_replace(',', '', $request->nilai_pekerjaan);
         $pekerjaans = Pekerjaan::findOrFail($id);
         $pekerjaans->pekerjaan = $request->pekerjaan;
@@ -116,7 +105,7 @@ class PekerjaanController extends Controller
         $pekerjaans->progres = $request->progres;
         $pekerjaans->status = $request->status;
         $pekerjaans->save();
-        
+
         return redirect()->route('pekerjaan')->with('success', 'Data proyek berhasil diperbarui.');
     }
 
