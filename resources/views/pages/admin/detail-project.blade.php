@@ -16,6 +16,8 @@
                 <div class="page_action">
                     <a href="project" class="btn btn-primary"><i class="fa fa-mail-reply"></i> Back</a>
                 </div>
+                
+                
                 <div class="p-2 d-flex">
 
                 </div>
@@ -183,10 +185,10 @@
                                     <tr>@foreach ($project as $proj)
                                         
                                     
-                                        <td><strong>{{ $proj->project }}</strong><br>
-                                            {{ $proj->no_kontrak }}
+                                        <td><strong>{{ $kerjaan }}</strong><br>
+                                            {{ $no_spk }}
                                         </td>
-                                        <td>Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
+                                        <td>Rp </td>
                                         <td style="text-align: center;">{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
                                         <td style="text-align: center;"><span class="badge badge-success">50%</span></td>
                                         <td style="text-align: center;">10.000.000<br>1 Termin</td>
@@ -656,6 +658,9 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="dokumentasi">
+                <div class="page_action">
+                    <a href="project" class="btn btn-primary"><i class="fa fa-arrow-up"></i> Unggah Dokumentasii</a>
+                </div><br>
                 <div class="card single_post">
                     <div class="body">
                         <div class="img-post">
