@@ -53,23 +53,24 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="tgl_kontrak">Tanggal Kontrak:</label>
-                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" required>
+                                    <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" data-provide="datepicker" required>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="no_kontrak">Nomor Kontrak:</label>
                                     <input type="text" id="no_kontrak" name="no_kontrak" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="mulai_kontrak">Mulai Kontrak:</label>
-                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" required>
+                                    <input type="date" id="mulai_kontrak" name="mulai_kontrak" class="form-control" data-provide="datepicker" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="selesai_kontrak">Selesai Kontrak:</label>
-                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" required>
+                                    <input type="date" id="selesai_kontrak" name="selesai_kontrak" class="form-control" data-provide="datepicker" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="status">Status:</label>
-                                    <input type="text" id="status" name="status" class="form-control" required>
+                                    <label for="status">File:</label>
+                                    <input type="file" id="file" name="status" class="form-control dropify" required>
                                 </div>
                             </form>
                         </div>
@@ -98,13 +99,9 @@
                     <table class="table table-hover js-basic-example dataTable table-custom table-striped m-b-0 c_list">
                         <thead class="thead-dark">
                             <tr>
-                                <th>
-                                    <label class="fancy-checkbox">
-                                        <input class="select-all" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                </th>
+                                <th style="text-align: center;">No</th>
                                 <th style="text-align: center;">Project</th>
+                                <th style="text-align: center;">Pemberi Kerja</th>
                                 <th style="text-align: center;">Lokasi</th>
                                 <th style="text-align: center;">Customer</th>
                                 <th style="text-align: center;">Nilai Kontrak</th>
@@ -117,17 +114,7 @@
                         <tbody>
                             @foreach ($listProject as $proj )
                             <tr>
-                                <td class="width45">
-                                    <label class="fancy-checkbox">
-                                        <input class="checkbox-tick" type="checkbox" name="checkbox">
-                                        <span></span>
-                                    </label>
-                                    {{-- <img src="../assets/images/xs/avatar1.jpg" class="rounded-circle avatar" alt="">
-                                </td>
-                                <td>
-                                    <h6 class="mb-0">Marshall Nichols</h6>
-                                    <span>marshall-n@gmail.com</span>
-                                </td> --}}
+                                <td class="width45">{{ $loop->iteration}} </td>
                                 <td><span><b>{{ $proj->project }}</b><br>{{ $proj->no_kontrak }}</span></td>
                                 <td><span><b>{{ $proj->lokasi }}</b>
                                 <td><span>{{ $proj->client['client'] }}</span></td>
@@ -138,7 +125,11 @@
 
                                 <td style="position: sticky; right: 0; z-index: 1; background: #fff">
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $proj->id }}"><i class="fa fa-edit"></i></button>
-                                    <a href="{{ route('detail-project', ['id' => $proj->id]) }}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                    <<<<<<< HEAD <a href="detail-project/{{ $proj->id }}" class="btn btn-success"><i class="icon-eye"></i></a>
+
+                                        =======
+                                        <a href="{{ route('detail-project', ['id' => $proj->id]) }}" class="btn btn-success"><i class="icon-eye"></i></a>
+                                        >>>>>>> b90685b3d4dacae32d3a33b9f090d6055b93152f
                                 </td>
                             </tr>
                             <!-- modal edit -->

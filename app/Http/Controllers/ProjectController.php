@@ -30,15 +30,17 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function detail()
+    public function detail($id)
     {
         $title = 'Detail Proyek';
-
-        return view('pages.admin.detail-project', [
+        $project = Project::with('client')->findOrFail($id);
+        $data = [
+            'listProject' => $project,
             'title' => $title,
-
-        ]);
+        ];
+        return view('pages.admin.detail-project', $data);
     }
+
 
     public function detail2()
     {
@@ -108,6 +110,7 @@ class ProjectController extends Controller
         $mulai_kontrak = Project::find($id)->mulai_kontrak;
         $selesai_kontrak = Project::find($id)->selesai_kontrak;
         $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
+
         $totalcashin = Cashin::where('pekerjaan_id', $id)
                      ->where('status', 1)
                      ->sum('nominal');
@@ -117,6 +120,12 @@ class ProjectController extends Controller
 
 
         return view('pages.admin.detail-project', compact('no_spk','no_k','kerjaan','totalcashin','lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
+
+        $totalcashin = CashIn::where('pekerjaan_id', $id)
+                      ->where('status', 1)
+                      ->sum('nominal');
+
+
     }
 
 
