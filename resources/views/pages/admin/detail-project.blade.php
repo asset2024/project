@@ -3,7 +3,7 @@
 <div class="block-header">
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
-            <h2>{{$title}}</h2>
+            <h2>Detail Proyek</h2>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-dashboard"></i></a></li>
                 <li class="breadcrumb-item">Proyek</li>
@@ -28,24 +28,31 @@
     <div class="col-lg-3 col-md-12">
         <div class="card member-card">
             <div class="header primary-bg text-light mb-3">
+<<<<<<< HEAD
                 <h5 class="mt-2 mb-0">{{$listProject->project}}</h5>
                 <span>{{$listProject->client['client']}}</span>
                 <br>
                 <br>
+=======
+                                  
+                <h4 class="mt-2 mb-0">{{ $proj }}</h4>
+                <span>Nama Mitra</span>
+>>>>>>> b90685b3d4dacae32d3a33b9f090d6055b93152f
             </div>
 
             <div class="member-img">
                 <a href="javascript:void(0);"><img src="../assets/images/project/avatar.jpg" class="rounded-circle" alt="profile-image"></a>
             </div>
             <div class="body">
-                <p class="text-muted mb-3">Lokasi Proyek<br> Provinsi / Negara</p>
+                <p class="text-muted mb-3">Lokasi Proyek<br> {{ $lokasi }}</p>
 
                 <div class="row">
 
                     <div class="col-12">
-                        <h5 class="mb-1">Rp 100,656,000,000</h5>
+                        <h5 class="mb-1">Rp {{number_format ($nilai_kontrak,0) }}</h5>
                         <small>(Nilai Kontrak)</small>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -55,16 +62,16 @@
                 <div class="tab-content pl-0 pr-0 pb-0">
                     <div class="tab-pane active" id="about">
                         <small class="text-muted">No. Kontrak: </small>
-                        <p>SP-01/PRTMN/III/2023</p>
+                        <p>{{ $no_kontrak }}</p>
                         <hr>
                         <small class="text-muted">Waktu Kontrak: </small>
-                        <p>31-03-2023 - 31-03-2024</p>
+                        <p>{{ \Carbon\Carbon::parse($mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($selesai_kontrak)->format('d-m-Y') }}</p>
                         <hr>
                         <small class="text-muted">Lama Pekerjaan </small>
-                        <p>60 Hari</p>
+                        <p> {{ $lama_pekerjaan }}</p>
                         <hr>
                         <small class="text-muted">Cash In </small>
-                        <p>677.000.000</p>
+                        <p>{{ $totalcashin }}</p>
                         <hr>
                         <small class="text-muted">Termin Invoice </small>
                         <p>4 Termin</p>
@@ -173,12 +180,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><strong>Pemasangan Pipa</strong><br>
-                                            123456
+                                    <tr>@foreach ($project as $proj)
+                                        
+                                    
+                                        <td><strong>{{ $proj->project }}</strong><br>
+                                            {{ $proj->no_kontrak }}
                                         </td>
-                                        <td>32.000.000</td>
-                                        <td style="text-align: center;">25/04/2011 - <br>25/04/2011</td>
+                                        <td>Rp {{number_format ($proj->nilai_kontrak,0) }}</td>
+                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
                                         <td style="text-align: center;"><span class="badge badge-success">50%</span></td>
                                         <td style="text-align: center;">10.000.000<br>1 Termin</td>
                                         <td style="text-align: center;">On Going</td>
@@ -187,6 +196,7 @@
                                             <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
+                                    @endforeach
                                     <!-- modal edit -->
                                     <div class="modal fade" id="editModalSpk" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{-- $proj->id --}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -664,6 +674,7 @@
         </div>
     </div>
 </div>
+
 
 
 @endsection

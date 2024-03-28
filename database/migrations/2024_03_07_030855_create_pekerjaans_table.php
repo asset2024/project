@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('selesai_pekerjaan');
             $table->integer('progres');
             $table->string('status');
+           
         });
     }
 

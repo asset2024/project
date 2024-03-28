@@ -60,7 +60,7 @@ class PekerjaanController extends Controller
             $Pekerjaan->nilai_pekerjaan = $request->nilai_pekerjaan;
             $Pekerjaan->mulai_pekerjaan = $request->mulai_pekerjaan;
             $Pekerjaan->selesai_pekerjaan = $request->selesai_pekerjaan;
-            $Pekerjaan->progres = $request->progres;
+            $Pekerjaan->progres = '0';
             $Pekerjaan->status = '1';
             $Pekerjaan->save();
 
@@ -103,10 +103,24 @@ class PekerjaanController extends Controller
         $pekerjaans->mulai_pekerjaan = $request->mulai_pekerjaan;
         $pekerjaans->selesai_pekerjaan = $request->selesai_pekerjaan;
         $pekerjaans->progres = $request->progres;
-        $pekerjaans->status = $request->status;
+        $pekerjaans->status = '1';
         $pekerjaans->save();
 
         return redirect()->route('pekerjaan')->with('success', 'Data proyek berhasil diperbarui.');
+    }
+
+    public function nonaktif($id)
+    {
+   // dd($id);
+        // Temukan pekerjaan berdasarkan ID
+        $pekerjaan = Pekerjaan::findOrFail($id);
+      //  dd($pekerjaan);
+        // Ubah status pekerjaan menjadi tidak aktif
+        $pekerjaan->status = '2';
+        $pekerjaan->save();
+
+        // Redirect atau response sesuai kebutuhan
+        return redirect()->back()->with('success', 'Status pekerjaan berhasil diubah menjadi tidak aktif.');
     }
 
     /**
