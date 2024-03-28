@@ -31,11 +31,11 @@
                                         @csrf
                                         
                                         <div class="form-group">
-                                            <label for="pekerjaan_id">Pekerjaan:</label>
+                                            <label for="id">Pekerjaan:</label>
                                             <select id="pekerjaan_id" name="pekerjaan_id" class="form-control" required>
                                                 <option value="" selected disabled>Select pekerjaan</option>
                                                 @foreach($listPekerjaan as $pekerjaan)
-                                                    <option value="{{ $pekerjaan->pekerjaan_id }}">{{ $pekerjaan->pekerjaan }}</option>
+                                                    <option value="{{ $pekerjaan->id }}">{{ $pekerjaan->pekerjaan }}</option>
                                                 @endforeach
                                             </select>
                                         <div class="form-group">
@@ -60,8 +60,8 @@
                                             <input type="text" id="catatan" name="catatan" class="form-control" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="status">Status:</label>
-                                            <input type="text" id="status" name="status" class="form-control" required>
+                                            
+                                            <input type="hidden" id="status" name="status" class="form-control" required>
                                         </div>
                                     </form>
                                 </div>
@@ -101,12 +101,13 @@
                                 <th>Nominal</th>
                                 <th>Tujuan</th>
                                 <th>Catatan</th>
-                                <th>Status</th>
+                               
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cashout as $cashout )
+                            @if($cashout->status== 1)
                             <tr>
                                 <td class="width45">
                                     <label class="fancy-checkbox">
@@ -125,12 +126,103 @@
                                 <td class="text-right">{{ number_format($cashout->nominal, 0) }}</td>
                                 <td>{{ $cashout->tujuan }}</td>
                                 <td>{{ $cashout->catatan }}</td>
-                                <td>{{ $cashout->status }}</td>
+                                
                                 <td>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="fa fa-edit"></i></button>
-                                    <button type="button" class="btn btn-sm btn-outline-danger js-sweetalert" title="Delete" data-type="confirm"><i class="fa fa-trash-o"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $cashout->id }}"><i class="fa fa-edit"></i></button>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal{{ $cashout->id }}"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
+                            <div class="modal fade" id="deleteModal{{ $cashout->id }}" tabindex="-1"         role="dialog" aria-labelledby="deleteModalLabel{{ $cashout->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel{{ $cashout->id }}">Hapus Data Cash In</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('deletecashout', ['id' => $cashout->id]) }}">
+                                                @csrf
+                                                @method('PUT')                                                            
+                                                <div class="form-group">
+                                                    <h6 for="status">Apa anda yakin untuk menghapus data ?</h6>                                                                
+                                                </div>
+                                                <div class="form-group">                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" value="{{ $cashout->status }}" required>
+                                                </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                                            <button type="submit" class="btn btn-primary">Ya</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                            {{-- modal edit --}}
+                            <div class="modal fade" id="editModal{{ $cashout->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $cashout->id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalLabel{{ $cashout->id }}">Form Edit Data Cash In</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form method="POST" action="{{ route('update_cashout', ['id' => $cashout->id]) }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <div class="form-group">
+                                                    <label for="id">Pekerjaan:</label>
+                                                    <select id="pekerjaan_id" name="pekerjaan_id" class="form-control">
+                                                        @foreach ($listPekerjaan as $kerja)
+                                                            <option value="{{ $kerja->id }}" {{ $cashout->pekerjaan_id == $kerja->id ? 'selected' : '' }}>
+                                                                {{ $kerja->pekerjaan }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tgl_transaksi">Tanggal Transaksi:</label>
+                                                    <input type="date" id="tgl_transaksi" name="tgl_transaksi" class="form-control"  value="{{ $cashout->tgl_transaksi }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="transaksi">Transaksi:</label>
+                                                    <input type="text" id="transaksi" name="transaksi" class="form-control"
+                                                    value="{{ $cashout->transaksi }}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="nominal">Nominal:</label>
+                                                    <input type="text" id="nominal" name="nominal" class="form-control" 
+                                                    value="{{ number_format($cashout->nominal, 0) }}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dari">Tujuan:</label>
+                                                    <input type="text" id="tujuan" name="tujuan" class="form-control" value="{{ $cashout->tujuan }}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="catatan">Catatan:</label>
+                                                    <input type="text" id="catatan" name="catatan" class="form-control" value="{{ $cashout->catatan }}"required>
+                                                </div>
+                                                <div class="form-group">
+                                                    
+                                                    <input type="hidden" id="status" name="status" class="form-control" 
+                                                    value="{{ $cashout->status }}"required>
+                                                </div>
+                                            
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

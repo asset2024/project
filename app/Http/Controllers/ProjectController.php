@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Client;
+use App\Models\Cashin;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -28,15 +29,17 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function detail()
+    public function detail($id)
     {
         $title = 'Detail Proyek';
-
-        return view('pages.admin.detail-project', [
+        $project = Project::with('client')->findOrFail($id);
+        $data = [
+            'listProject' => $project,
             'title' => $title,
-
-        ]);
+        ];
+        return view('pages.admin.detail-project', $data);
     }
+
 
     public function detail2()
     {
@@ -73,6 +76,8 @@ class ProjectController extends Controller
             $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
             $project = new Project();
             $project->project = $request->project;
+            $project->lokasi = $request->lokasi;
+
             $project->client_id = $request->id;
             $project->nilai_kontrak = $nilai_kontrak;
 
@@ -94,8 +99,22 @@ class ProjectController extends Controller
     }
 
 
-    public function show(Project $project)
-    {
+    public function show($id) {
+        
+        $project = Project::with('client')->get();   
+        $proj = Project::find($id)->project;   
+        $lokasi = Project::find($id)->lokasi;
+        $nilai_kontrak = Project::find($id)->nilai_kontrak;
+        $no_kontrak = Project::find($id)->no_kontrak;
+        $mulai_kontrak = Project::find($id)->mulai_kontrak;
+        $selesai_kontrak = Project::find($id)->selesai_kontrak;
+        $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
+        $totalcashin = CashIn::where('pekerjaan_id', $id)
+                      ->where('status', 1)
+                      ->sum('nominal');
+
+
+        return view('pages.admin.detail-project', compact('totalcashin','lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
     }
 
 
@@ -125,7 +144,8 @@ class ProjectController extends Controller
         $nilai_kontrak = str_replace(',', '', $request->nilai_kontrak);
         $project = Project::findOrFail($id);
         $project->project = $request->project;
-        $project->client_id = $request->id;
+        $project->lokasi = $request->lokasi;
+        $project->client_id = $request->id_client;
         $project->nilai_kontrak = $nilai_kontrak;
         $project->tgl_kontrak = $request->tgl_kontrak;
         $project->no_kontrak = $request->no_kontrak;

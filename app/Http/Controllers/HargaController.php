@@ -4,30 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class HargaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function enm()
+    public function index()
     {
-
-        $title = 'Dashboard PT ENM';
-
-        return view('pages.admin.dashboard-enm', [
-            'title' => $title,
-        ]);
+        //
     }
 
-    public function muji()
-    {
-
-        $title = 'Dashboard PT MUJI';
-
-        return view('pages.admin.dashboard-muji', [
-            'title' => $title,
-        ]);
-    }
     /**
      * Show the form for creating a new resource.
      */
