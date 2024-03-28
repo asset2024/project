@@ -651,7 +651,7 @@
             </div>
             <div role="tabpanel" class="tab-pane" id="dokumentasi">
                 <div class="page_action">
-                    <a href="project" class="btn btn-primary"><i class="fa fa-arrow-up"></i> Unggah Dokumentasii</a>
+                    <a href="project" class="btn btn-primary"><i class="fa fa-arrow-up"></i> Unggah Dokumentasi</a>
                 </div><br>
                 <div class="card single_post">
                     <div class="body">

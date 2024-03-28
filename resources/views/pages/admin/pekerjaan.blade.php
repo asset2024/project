@@ -149,7 +149,7 @@
                                 <th>No. SPK</th>
                                 <th>Nilai Pekerjaan</th>
                                 <th>Waktu Pekerjaan</th>
-                                <th>Progres</th>
+                                <th>Progress</th>
                                 <th class="action-col" style="position: sticky; right: 0; z-index: 1; text-align: center;">Aksi</th>
 
                             </tr>
