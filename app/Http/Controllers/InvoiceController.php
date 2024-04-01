@@ -58,9 +58,10 @@ class InvoiceController extends Controller
             $inv->pekerjaan_id = $request->pekerjaan_id;
             $inv->tgl_invoice = $request->tgl_invoice;
             $inv->invoice = $request->invoice;
-            $inv->detail = $request->detail;
+            $inv->detail = 'draft';
             $inv->nominal = $request->nominal;
             $inv->status = '1';
+            $inv->tgl_jtempo =$request->tgl_jtempo;
             $inv->save();
         
            
@@ -115,6 +116,8 @@ class InvoiceController extends Controller
         $invoices->detail = $request->detail;
         $invoices->nominal = $nominal;
         $invoices->status = $request->status;
+        $invoices->tgl_jtempo = $request->tgl_jtempo;
+
         $invoices->save();
         
         return redirect()->route('invoice')->with('success', 'Data proyek berhasil diperbarui.');

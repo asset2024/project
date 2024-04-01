@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('pekerjaan');
             $table->string('no_spk');
             $table->double('nilai_pekerjaan');
+            $table->integer('termin_inv');
             $table->date('mulai_pekerjaan');
             $table->date('selesai_pekerjaan');
             $table->integer('progres');
             $table->string('status');
-           
         });
     }
 

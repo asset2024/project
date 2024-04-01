@@ -63,6 +63,7 @@ class PekerjaanController extends Controller
             $Pekerjaan->selesai_pekerjaan = $request->selesai_pekerjaan;
             $Pekerjaan->progres = '0';
             $Pekerjaan->status = '1';
+            $Pekerjaan->termin_inv = $request->termin_inv;
             $Pekerjaan->save();
         
            

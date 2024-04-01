@@ -104,19 +104,24 @@ class ProjectController extends Controller
         $proj = Project::find($id)->project;   
         $lokasi = Project::find($id)->lokasi;
         $nilai_kontrak = Project::find($id)->nilai_kontrak;
+        $nilai_pekerjaan = Pekerjaan::find($id)->nilai_pekerjaan;
         $no_kontrak = Project::find($id)->no_kontrak;
+        $mulai_pekerjaan = Pekerjaan::find($id)->mulai_pekerjaan;
+        $selesai_pekerjaan = Pekerjaan::find($id)->selesai_pekerjaan;
         $mulai_kontrak = Project::find($id)->mulai_kontrak;
         $selesai_kontrak = Project::find($id)->selesai_kontrak;
         $lama_pekerjaan = Project::find($id)->lama_pekerjaan;
         $totalcashin = Cashin::where('pekerjaan_id', $id)
                      ->where('status', 1)
                      ->sum('nominal');
+        $prog = Pekerjaan::find($id)->progres;
+        $termin_inv = Pekerjaan::find($id)->termin_inv;
         $kerjaan = Pekerjaan::find($id)->pekerjaan;
         $no_k = Project::find($id)->no_kontrak;
         $no_spk = Pekerjaan::find($id)->no_spk;
 
 
-        return view('pages.admin.detail-project', compact('no_spk','no_k','kerjaan','totalcashin','lama_pekerjaan','project','proj','lokasi','nilai_kontrak','no_kontrak','mulai_kontrak','selesai_kontrak'));
+        return view('pages.admin.detail-project', compact('prog','termin_inv','mulai_kontrak','selesai_kontrak','no_spk','no_k','kerjaan','totalcashin','lama_pekerjaan','project','proj','lokasi','nilai_kontrak','nilai_pekerjaan','no_kontrak','mulai_pekerjaan','selesai_pekerjaan'));
     }
 
 

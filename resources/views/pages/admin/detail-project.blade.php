@@ -68,7 +68,7 @@
                         <p>{{ $totalcashin }}</p>
                         <hr>
                         <small class="text-muted">Termin Invoice </small>
-                        <p>4 Termin</p>
+                        <p>{{ $termin_inv }}</p>
                         <hr>
                         <ul class="list-unstyled">
                             <li>
@@ -180,9 +180,9 @@
                                         <td><strong>{{ $kerjaan }}</strong><br>
                                             {{ $no_spk }}
                                         </td>
-                                        <td>Rp </td>
-                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($proj->mulai_kontrak)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($proj->selesai_kontrak)->format('d-m-Y') }}</td>
-                                        <td style="text-align: center;"><span class="badge badge-success">50%</span></td>
+                                        <td>{{ $nilai_kontrak }} </td>
+                                        <td style="text-align: center;">{{ \Carbon\Carbon::parse($proj->mulai_pekerjaan)->format('d-m-Y') }} s.d {{ \Carbon\Carbon::parse($proj->selesai_pekerjaan)->format('d-m-Y') }}</td>
+                                        <td style="text-align: center;"><span class="badge badge-success">{{ $prog }}%</span></td>
                                         <td style="text-align: center;">10.000.000<br>1 Termin</td>
                                         <td style="text-align: center;">On Going</td>
                                         <td style="text-align: center;">

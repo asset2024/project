@@ -180,6 +180,7 @@
                                                     <label for="nilai_kontrak">Nilai Kontrak:</label>
                                                     <input type="text" id="nilai_kontrak" name="nilai_kontrak" class="form-control" value="{{ number_format($proj->nilai_kontrak, 0) }}" required>
                                                 </div>
+                                                
                                                 <div class="form-group">
                                                     <label for="tgl_kontrak">Tanggal Kontrak:</label>
                                                     <input type="date" id="tgl_kontrak" name="tgl_kontrak" class="form-control" value="{{ $proj->tgl_kontrak }}" required>
@@ -231,4 +232,14 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('nilai_kontrak').addEventListener('input', function (e) {
+            var input = e.target;
+            var value = input.value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            input.value = value;
+        });
+    });
+</script>
+
 @endsection

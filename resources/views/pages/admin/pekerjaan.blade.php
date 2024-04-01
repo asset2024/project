@@ -102,6 +102,15 @@
                                 <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" required>
                             </div>
                             <div class="form-group">
+                                <label for="termin_inv">Termin Invoice:</label>
+                                <select id="termin_inv" name="termin_inv" class="form-control" required>
+                                    <option value="">Pilih Termin Invoice</option> <!-- Opsi default -->
+                                    @for ($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option> <!-- Opsi dari 1 hingga 10 -->
+                                    @endfor
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="mulai_pekerjaan">Mulai Pekerjaan:</label>
                                 <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" required>
                             </div>
@@ -148,7 +157,8 @@
                                 <th>Pekerjaan</th>
                                 <th>No. SPK</th>
                                 <th>Nilai Pekerjaan</th>
-                                <th>Waktu Pekerjaan</th>
+                                <th>Termin Invoice</th>
+                                <th>Waktu Pekerjaan</th>                                
                                 <th>Progress</th>
                                 <th class="action-col" style="position: sticky; right: 0; z-index: 1; text-align: center;">Aksi</th>
 
@@ -180,7 +190,7 @@
                                 <td><span>{{ $kerja->pekerjaan }}</span></td>
                                 <td>{{ $kerja->no_spk }}</td>
                                 <td class="text-right">{{ number_format($kerja->nilai_pekerjaan, 0) }}</td>
-
+                                <td>{{ $kerja->termin_invoice }}</td>
                                 <td>{{ \Carbon\Carbon::parse($kerja->mulai_pekerjaan)->format('j M Y') }}-<br>
                                 {{ \Carbon\Carbon::parse($kerja->selesai_pekerjaan)->format('j M Y') }}</td>
 
@@ -274,6 +284,11 @@
                                                     <label for="nilai_pekerjaan">Nilai Pekerjaan:</label>
                                                     <input type="text" id="nilai_pekerjaan" name="nilai_pekerjaan" class="form-control" value="{{ number_format($kerja->nilai_pekerjaan, 0) }}" required>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="termin_inv">Termin Invoice:</label>
+                                                    <input type="text" id="termin_inv" name="termin_inv" class="form-control" value="{{ $kerja->termin_inv }}" required>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label for="mulai_pekerjaan">Mulai Pekerjaan:</label>
                                                     <input type="date" id="mulai_pekerjaan" name="mulai_pekerjaan" class="form-control" value="{{ $kerja->mulai_pekerjaan }}" required>

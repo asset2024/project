@@ -47,9 +47,13 @@
                                     <input type="text" id="invoice" name="invoice" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="detail">Detail:</label>
-                                    <input type="text" id="detail" name="detail" class="form-control" required>
+                                    
+                                    <input type="hidden" id="detail" name="detail" class="form-control" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="tgl_jtempo">Tanggal Jatuh Tempo:</label>
+                                    <input type="date" id="tgl_jtempo" name="tgl_jtempo" class="form-control" required>
+                            </div>
                                 <div class="form-group">
                                     <label for="nominal">nominal:</label>
                                     <input type="text" id="nominal" name="nominal" class="form-control" required>
@@ -92,8 +96,7 @@
                                 </th>
                                 <th>SPK</th>
                                 <th>Tanggal</th>
-                                <th>Invoice</th>
-                                
+                                <th>Invoice</th>                                
                                 <th>Nominal</th>
                                 <th>Detail</th>
                                 
@@ -207,7 +210,23 @@
                                                 </div> --}}
                                                 <div class="form-group">
                                                     <label for="detail">Detail:</label>
-                                                    <input type="text" id="detail" name="detail" class="form-control" value="{{ $invoice->detail }}"required>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="detail[]" value="terkirim" {{ in_array('terkirim', explode(',', $invoice->detail)) ? 'checked' : '' }}> Terkirim</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="detail[]" value="terbayar" {{ in_array('terbayar', explode(',', $invoice->detail)) ? 'checked' : '' }}> Terbayar</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="detail[]" value="pending" {{ in_array('pending', explode(',', $invoice->detail)) ? 'checked' : '' }}> Pending</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="detail[]" value="reject" {{ in_array('reject', explode(',', $invoice->detail)) ? 'checked' : '' }}> Reject</label>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="tgl_jtempo">Tanggal Jatuh Tempo:</label>
+                                                    <input type="date" id="tgl_jtempo" name="tgl_jtempo" class="form-control"  value="{{ $invoice->tgl_jtempo }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     
