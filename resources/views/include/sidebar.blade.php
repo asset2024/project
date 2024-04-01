@@ -16,7 +16,6 @@
                    </ul>
                </div>
                <hr>
-
            </div>
            <!-- Nav tabs -->
            <ul class="nav nav-tabs">
@@ -46,17 +45,18 @@
                                <a href="#App" class="has-arrow"><i class="fa fa-th-large"></i><span>Proyek</span></a>
                                <ul>
                                    <li class="{{ Request::is('project') ? 'active' : '' }}"><a href="/project">Proyek</a></li>
-                                   <li class="{{ Request::is('pekerjaan') ? 'active' : '' }}"><a href="/pekerjaan">Pekerjaan</a></li>
+                                   <li class="{{ Request::is('pekerjaan') ? 'active' : '' }}"><a href="/pekerjaan">SPK</a></li>
 
                                </ul>
                            </li>
-                           <li class="{{ Request::is('pltm','cng','pasirjadi','lpg') ? 'active' : '' }}">
+                           <li class="{{ Request::is('pltm','cng','pasirjadi','lpg','sewa_lahan') ? 'active' : '' }}">
                                <a href="#App" class="has-arrow"><i class="fa fa-thumb-tack"></i><span>Reguler</span></a>
                                <ul>
                                    <li class="{{ Request::is('pltm') ? 'active' : '' }}"><a href="/pltm">PLTM Cirompang</a></li>
                                    <li class="{{ Request::is('cng') ? 'active' : '' }}"><a href="/cng">CNG</a></li>
                                    <li class="{{ Request::is('pasirjadi') ? 'active' : '' }}"><a href="/pasirjadi">Pasirjadi</a></li>
                                    <li class="{{ Request::is('lpg') ? 'active' : '' }}"><a href="/lpg">LPG</a></li>
+                                   <li class="{{ Request::is('sewa_lahan') ? 'active' : '' }}"><a href="/sewa_lahan">Sewa Lahan</a></li>
                                </ul>
                            </li>
                            <li class="{{ Request::is('cashin','cashout','invoice') ? 'active' : '' }}">
@@ -70,15 +70,22 @@
 
                            <hr>
 
-                           <li class="{{ Request::is('client','users') ? 'active' : '' }}">
+                           <li class="{{ Request::is('pemberi_kerja','mitra','harga') ? 'active' : '' }}">
                                <a href="#Widgets" class="has-arrow"><i class="fa fa-cog"></i><span>Master</span></a>
                                <ul>
-                                   <li class="{{ Request::is('client') ? 'active' : '' }}"><a href="/client">Klien</a></li>
-                                   <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="widgets-data.html">Users</a></li>
-
+                                   <li class="{{ Request::is('pemberi_kerja') ? 'active' : '' }}"><a href="/pemberi_kerja">Pemberi Kerja</a></li>
+                                   <li class="{{ Request::is('mitra') ? 'active' : '' }}"><a href="/mitra">Mitra</a></li>
+                                   <li class="{{ Request::is('harga') ? 'active' : '' }}"><a href="/harga">Price List</a></li>
                                </ul>
                            </li>
-
+                           <li class="{{ Request::is('users','roles','permisions') ? 'active' : '' }}">
+                               <a href="#Widgets" class="has-arrow"><i class="fa fa-cog"></i><span>Users</span></a>
+                               <ul>
+                                   <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="/users">Users</a></li>
+                                   <li class="{{ Request::is('roles') ? 'active' : '' }}"><a href="/roles">Roles</a></li>
+                                   <li class="{{ Request::is('permisions') ? 'active' : '' }}"><a href="/permisions">Permisions</a></li>
+                               </ul>
+                           </li>
                        </ul>
                    </nav>
                </div>

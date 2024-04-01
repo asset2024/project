@@ -6,6 +6,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CngController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\detailController;
+use App\Http\Controllers\HargaController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\LpgController;
 use App\Http\Controllers\PasirjadiController;
@@ -53,8 +54,10 @@ Route::get('/dashboard-muji', [DashboardController::class, 'muji'])->name('dashb
 
 Route::get('/project', [ProjectController::class, 'index'])->name('project');
 Route::post('/project/store', [ProjectController::class, 'store'])->name('store_project');
-Route::get('/detail-project/{id}', [ProjectController::class, 'show'])->name('detail-project');
-Route::get('/detail-project/{id}', [ProjectController::class, 'show'])->name('detail-project');
+
+Route::get('/detail-project', [ProjectController::class, 'detail'])->name('detail-project');
+Route::get('/detail-project2', [ProjectController::class, 'detail2'])->name('detail-project2');
+
 
 Route::put('/project/{id}', [ProjectController::class, 'update'])->name('update_project');
 Route::get('/pekerjaan', [PekerjaanController::class, 'index'])->name('pekerjaan');
@@ -88,8 +91,3 @@ Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_
 Route::post('/invoice/store', [InvoiceController::class, 'store'])->name('store_invoice');
 Route::put('/invoice/{id}', [InvoiceController::class, 'update'])->name('update_invoice');
 Route::get('/client', [ClientController::class, 'index'])->name('client');
-
-Route::put('/deletekerja/{id}', [PekerjaanController::class, 'nonaktif'])->name('deletekerja');
-Route::put('/deletecashin/{id}', [CashinController::class, 'nonaktif'])->name('deletecashin');
-Route::put('/deletecashout/{id}', [CashoutController::class, 'nonaktif'])->name('deletecashout');
-Route::put('/deleteinvoice/{id}', [InvoiceController::class, 'nonaktif'])->name('deleteinvoice');
